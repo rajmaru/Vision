@@ -1,0 +1,29 @@
+<resources>
+    <!-- Splash Screen Api -->
+    <style name="Theme.CustomSplashScreenTheme" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/theme</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ss_logo</item>
+        <item name="windowSplashScreenAnimationDuration">1500</item>
+        <item name="postSplashScreenTheme">@style/Theme.Vision</item>
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <!-- Base application theme. -->
+    <style name="Theme.Vision" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/theme</item>
+        <item name="colorPrimaryVariant">@color/theme</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/theme</item>
+        <item name="colorSecondaryVariant">@color/theme</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">@color/theme</item>
+        <!-- Navigation bar color -->
+        <item name="android:navigationBarColor">@color/background</item>
+        <item name="android:windowLightNavigationBar">true</item>
+    </style>
+</resources>
