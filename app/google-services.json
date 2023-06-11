@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "117695635223",
+    "project_id": "vision-76a53",
+    "storage_bucket": "vision-76a53.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:117695635223:android:1f22595f5ad3598902e152",
+        "android_client_info": {
+          "package_name": "com.one.vision"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "117695635223-8729mcdadlug0mos6ove9pv9vc0g8rjb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDh_A_Il19nrASHtX-QdgEeygl5AEBbRYc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "117695635223-8729mcdadlug0mos6ove9pv9vc0g8rjb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

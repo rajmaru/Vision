@@ -24,6 +24,5 @@
         <item name="android:statusBarColor">@color/theme</item>
         <!-- Navigation bar color -->
         <item name="android:navigationBarColor">@color/background</item>
-        <item name="android:windowLightNavigationBar">true</item>
     </style>
 </resources>
