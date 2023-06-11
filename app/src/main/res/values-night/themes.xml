@@ -1,10 +1,10 @@
 <resources>
     <!-- Splash Screen Api -->
     <style name="Theme.CustomSplashScreenTheme" parent="Theme.SplashScreen">
-        <item name="windowSplashScreenBackground">@color/background</item>
+        <item name="windowSplashScreenBackground">@color/black</item>
         <item name="windowSplashScreenAnimatedIcon">@drawable/ss_logo</item>
         <item name="windowSplashScreenAnimationDuration">1500</item>
-        <item name="postSplashScreenTheme">@style/Theme.Vision</item>
+        <item name="postSplashScreenTheme">@style/Theme.SignIn</item>
         <item name="windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
         <item name="android:windowFullscreen">true</item>
@@ -22,5 +22,11 @@
         <item name="colorOnSecondary">@color/white</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">@color/black</item>
+    </style>
+
+    <!-- Sign in theme. -->
+    <style name="Theme.SignIn" parent="Theme.Vision">
+        <!-- Navigation bar color -->
+        <item name="android:navigationBarColor">@color/black</item>
     </style>
 </resources>

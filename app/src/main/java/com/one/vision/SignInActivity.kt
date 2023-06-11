@@ -1,7 +1,11 @@
 package com.one.vision
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
+import android.view.View
+import android.view.WindowManager
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -22,7 +26,7 @@ class SignInActivity : AppCompatActivity() {
                 val intent = result.data
                 handleSignInResult(intent)
             } else {
-                Toast.makeText(this, "Google sign in failed", Toast.LENGTH_SHORT).show()
+                Log.d("SIGN_IN", "Google sign in failed")
             }
         }
 
@@ -31,6 +35,13 @@ class SignInActivity : AppCompatActivity() {
         installSplashScreen()
         binding = ActivitySignInBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        window.apply {
+            clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+            addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+            decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+            statusBarColor = Color.TRANSPARENT
+        }
 
         auth = FirebaseAuth.getInstance()
 
@@ -65,8 +76,7 @@ class SignInActivity : AppCompatActivity() {
             val account = task.getResult(ApiException::class.java)
             firebaseAuthWithGoogle(account.idToken!!)
         } catch (e: ApiException) {
-            Toast.makeText(this, "Google sign in failed: ${e.message}", Toast.LENGTH_SHORT)
-                .show()
+            Log.d("SIGN_IN", "Google sign in failed: ${e.message}")
         }
     }
 
@@ -78,7 +88,7 @@ class SignInActivity : AppCompatActivity() {
                     startActivity(Intent(this, MainActivity::class.java))
                     finish()
                 } else {
-                    Toast.makeText(this, "Authentication failed", Toast.LENGTH_SHORT).show()
+                    Log.d("SIGN_IN", "Authentication failed")
                 }
             }
     }
