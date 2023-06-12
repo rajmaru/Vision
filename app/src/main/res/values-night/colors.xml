@@ -4,7 +4,10 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="theme">#E50914</color>
-    <color name="background">#FF000000</color>
+    <color name="background">#000000</color>
+    <color name="surface">#1A1A1A</color>
+
+    <color name="logo">#F5F5F1</color>
 
     <color name="theme_black">#221F1F</color>
     <color name="theme_white">#F5F5F1</color>
