@@ -54,7 +54,7 @@ class SignInActivity : AppCompatActivity() {
             finish()
         }
 
-        binding.signInButton.setOnClickListener {
+        binding.signinButton.setOnClickListener {
             signIn()
         }
     }
