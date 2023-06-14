@@ -66,7 +66,7 @@ class AboutActivity : AppCompatActivity() {
         mGoogleSignInClient.signOut().addOnCompleteListener(this) {
             val intent = Intent(this@AboutActivity, SignInActivity::class.java)
             startActivity(intent)
-            finish()
+            finishAffinity()
         }
     }
 }
