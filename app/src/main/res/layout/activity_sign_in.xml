@@ -22,7 +22,7 @@
         android:id="@+id/signin_bg_gradient"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@drawable/img_gradient"
+        android:background="@drawable/signin_img_gradient"
         app:layout_constraintBottom_toTopOf="@+id/signin_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
