@@ -84,16 +84,28 @@ class MainActivity : AppCompatActivity() {
 
     private fun getSliderData() {
         sliderList.apply {
-            add(Movie("https://m.media-amazon.com/images/I/51BANINoAxL._AC_.jpg", "Drive", true))
             add(
                 Movie(
-                    "https://mb.cision.com/Public/14247/2902071/856b720fb81856ec_800x800ar.jpg",
-                    "WAR",
+                    "https://www.upwork.com/catalog-images-resized/effc537fe54a8f18e2529d07fdb593af/large@2x",
+                    "Seven Lost",
+                    true
+                )
+            )
+            add(
+                Movie(
+                    "https://wallpapercave.com/wp/wp8215948.jpg",
+                    "Black Adam",
                     false
                 )
             )
-            add(Movie("https://i.ebayimg.com/images/g/GtEAAOSw1W9eN1cY/s-l1600.jpg", "1947", true))
-            add(Movie("https://img.artpal.com/610421/5-56-24t.jpg", "Reversion", false))
+            add(Movie("https://i.ebayimg.com/images/g/GtEAAOSw1W9eN1cY/s-l1600.jpg", "1917", true))
+            add(
+                Movie(
+                    "https://lh6.googleusercontent.com/B0uQRPzgf2AX6EVvlqNWwV7ql2-TbAuWbJcnkHuC_uzEtG0viA6__4_v-bfdas4iM8MqIm8wcoDeaLRxugVFycbVvaelnagmzAsH9-ug-y0X2BxvEjFfhavM_fvWHDEnNKBFamG9=s0",
+                    "Oblivion",
+                    false
+                )
+            )
         }
         setSliderData()
     }
@@ -145,42 +157,56 @@ class MainActivity : AppCompatActivity() {
             )
             add(
                 Movie(
-                    "https://assets-global.website-files.com/6009ec8cda7f305645c9d91b/6408f6e7b5811271dc883aa8_batman-min.png",
+                    "https://cdn.shopify.com/s/files/1/0057/3728/3618/products/darkknight.building.24x36_480x.progressive.jpg?v=1648745678",
                     null,
                     true
                 )
             )
             add(
                 Movie(
-                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTARVsOtOpjwGUh1Z-n-t7Ggu2sDreOsr11Gg&usqp=CAU",
+                    "https://cdn.shopify.com/s/files/1/0057/3728/3618/products/star-wars-episode-vi-return-of-the-jedi_5vwrivp8_480x.progressive.jpg?v=1681833383",
                     null,
                     false
                 )
             )
             add(
                 Movie(
-                    "https://marketplace.canva.com/EAFH3gODxw4/1/0/1131w/canva-black-%26-white-modern-mystery-forest-movie-poster-rLty9dwhGG4.jpg",
+                    "https://cdn.shopify.com/s/files/1/0057/3728/3618/products/111750-Godzilla-vs-Kong-Final-A_480x.progressive.jpg?v=1615480750",
                     null,
                     true
                 )
             )
             add(
                 Movie(
-                    "https://d1csarkz8obe9u.cloudfront.net/posterpreviews/action-movie-poster-template-design-0f5fff6262fdefb855e3a9a3f0fdd361_screen.jpg?ts=1636996054",
+                    "https://cdn.shopify.com/s/files/1/0057/3728/3618/products/spider-man-no-way-home_l1mupilp_480x.progressive.jpg?v=1640203988",
                     null,
                     false
                 )
             )
             add(
                 Movie(
-                    "https://assets-global.website-files.com/6009ec8cda7f305645c9d91b/6408f6e7b5811271dc883aa8_batman-min.png",
+                    "https://cdn.shopify.com/s/files/1/0057/3728/3618/products/black_widow_ver17_480x.progressive.jpg?v=1663693758",
                     null,
                     true
                 )
             )
             add(
                 Movie(
-                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTARVsOtOpjwGUh1Z-n-t7Ggu2sDreOsr11Gg&usqp=CAU",
+                    "https://cdn.shopify.com/s/files/1/0057/3728/3618/products/moon-knight_mr9naymw_480x.progressive.jpg?v=1653573016",
+                    null,
+                    false
+                )
+            )
+            add(
+                Movie(
+                    "https://cdn.shopify.com/s/files/1/0057/3728/3618/products/f02c4b3ba81e2c9041d3de125a38cf56_52507489-30b8-4592-af26-7e22bebac299_480x.progressive.jpg?v=1675968940",
+                    null,
+                    false
+                )
+            )
+            add(
+                Movie(
+                    "https://cdn.shopify.com/s/files/1/0057/3728/3618/products/ant-man_97cc34db_480x.progressive.jpg?v=1648238678",
                     null,
                     false
                 )
