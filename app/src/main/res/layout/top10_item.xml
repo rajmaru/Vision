@@ -10,7 +10,6 @@
         android:layout_height="250dp"
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
-        app:cardBackgroundColor="@color/background"
         app:cardCornerRadius="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -69,7 +68,6 @@
                 android:layout_width="0dp"
                 android:layout_height="100dp"
                 android:alpha="0.5"
-                android:backgroundTint="@color/background"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

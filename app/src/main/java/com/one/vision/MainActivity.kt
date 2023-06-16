@@ -157,7 +157,7 @@ class MainActivity : AppCompatActivity() {
             )
             add(
                 Movie(
-                    "https://cdn.shopify.com/s/files/1/0057/3728/3618/products/darkknight.building.24x36_480x.progressive.jpg?v=1648745678",
+                    "https://www.vintagemovieposters.co.uk/wp-content/uploads/2015/01/IMG_5848.jpeg",
                     null,
                     true
                 )
