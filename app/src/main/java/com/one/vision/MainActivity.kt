@@ -97,11 +97,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        stopAutoSliding()
-    }
-
     private fun init() {
         homeSliderAdapter = HomeSliderAdapter()
         top10Adapter = Top10Adapter()
@@ -131,7 +126,7 @@ class MainActivity : AppCompatActivity() {
         sliderList.apply {
             add(
                 Movie(
-                    "https://i.pinimg.com/564x/bb/25/42/bb2542d552ac0626ae00a639307d345b.jpg",
+                    "https://m.media-amazon.com/images/I/91A9U++FKnL._AC_SL1500_.jpg",
                     "Aftermath",
                     null,
                     true
@@ -628,22 +623,25 @@ class MainActivity : AppCompatActivity() {
 
     private fun startAutoSliding() {
         val delay = 8000L // Delay in milliseconds between sliding
-        val period = 6000L // Period in milliseconds for automatic sliding
+        val period = 8000L // Period in milliseconds for automatic sliding
 
         timer?.schedule(delay, period) {
             lifecycleScope.launch(Dispatchers.Main) {
                 val currentPosition = binding.homeSlider.currentItem
-                val nextPosition =
-                    if (currentPosition < homeSliderAdapter.itemCount - 1) currentPosition + 1 else 0
+                val nextPosition = if (currentPosition < homeSliderAdapter.itemCount - 1) currentPosition + 1 else 0
                 binding.homeSlider.setCurrentItem(nextPosition, true)
             }
         }
     }
 
-
     private fun stopAutoSliding() {
         timer?.cancel()
         timer = null
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        stopAutoSliding()
     }
 
     private fun onClick() {
@@ -659,5 +657,6 @@ class MainActivity : AppCompatActivity() {
             }
         })
     }
+
 }
 

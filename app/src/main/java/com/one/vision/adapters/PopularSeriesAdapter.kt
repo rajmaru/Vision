@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.one.vision.databinding.PopularSeriesItemBinding
+import com.one.vision.databinding.MovieSlideItemBinding
 import com.one.vision.models.Movie
 
 class PopularSeriesAdapter  : RecyclerView.Adapter<PopularSeriesAdapter.PopularSeriesViewHolder>(){
@@ -20,24 +20,26 @@ class PopularSeriesAdapter  : RecyclerView.Adapter<PopularSeriesAdapter.PopularS
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PopularSeriesViewHolder {
-        return PopularSeriesViewHolder(PopularSeriesItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+        return PopularSeriesViewHolder(MovieSlideItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
 
     override fun onBindViewHolder(holder: PopularSeriesViewHolder, position: Int) {
         if(moviesList[position].isPrime!!){
-            holder.binding.popularSeriesPrimeIconLayout.visibility = View.VISIBLE
+            holder.binding.movieSlidePrimeIconLayout.visibility = View.VISIBLE
         }else{
-            holder.binding.popularSeriesPrimeIconLayout.visibility = View.GONE
+            holder.binding.movieSlidePrimeIconLayout.visibility = View.GONE
         }
+        holder.binding.movieSlideRatingsTv.visibility = View.GONE
+        holder.binding.movieSlideStarIcon.visibility = View.GONE
         Glide.with(context.applicationContext)
             .load(moviesList[position].image)
-            .into(holder.binding.popularSeriesImage)
+            .into(holder.binding.movieSlideImage)
     }
 
     override fun getItemCount(): Int {
         return moviesList.size
     }
 
-    inner class PopularSeriesViewHolder(val binding: PopularSeriesItemBinding) : RecyclerView.ViewHolder(binding.root)
+    inner class PopularSeriesViewHolder(val binding: MovieSlideItemBinding) : RecyclerView.ViewHolder(binding.root)
 
 }

@@ -1,13 +1,11 @@
 package com.one.vision.adapters
 
 import android.content.Context
-import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.one.vision.R
 import com.one.vision.databinding.Top10ItemBinding
 import com.one.vision.models.Movie
 
@@ -31,6 +29,7 @@ class Top10Adapter : RecyclerView.Adapter<Top10Adapter.Top10ViewHolder>(){
         }else{
             holder.binding.top10PrimeIconLayout.visibility = View.GONE
         }
+        holder.binding.top10Number.visibility = View.VISIBLE
         holder.binding.top10Number.text = "${position + 1}"
         Glide.with(context.applicationContext)
             .load(moviesList[position].image)
