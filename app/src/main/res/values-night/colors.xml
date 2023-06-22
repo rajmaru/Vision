@@ -6,6 +6,8 @@
     <color name="theme">#E50914</color>
     <color name="background">#000000</color>
     <color name="surface">#1A1A1A</color>
+    <color name="active_icon_tick">#00FF00</color>
+    <color name="inactive_icon_tick">#ED5E5E5E</color>
     <color name="active_prime_layout">#BD060E</color>
     <color name="inactive_prime_layout">#313131</color>
 

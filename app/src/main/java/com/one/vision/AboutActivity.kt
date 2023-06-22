@@ -44,6 +44,10 @@ class AboutActivity : AppCompatActivity() {
         binding.aboutLogout.setOnClickListener {
             logOut()
         }
+
+        binding.aboutBackButton.setOnClickListener{
+            finish()
+        }
     }
 
     private fun getUserFromFirebase() {
