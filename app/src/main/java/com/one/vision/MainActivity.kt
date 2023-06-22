@@ -647,6 +647,8 @@ class MainActivity : AppCompatActivity() {
     private fun onClick() {
         binding.homeProfilePic.setOnClickListener {
             startActivity(Intent(this@MainActivity, AboutActivity::class.java))
+            overridePendingTransition(R.anim.slide_in_right,
+                R.anim.slide_out_left)
         }
 
         binding.homeSlider.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {

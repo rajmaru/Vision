@@ -8,8 +8,7 @@
     <color name="surface">#FFFFFF</color>
     <color name="active_icon_tick">#1CBC1C</color>
     <color name="inactive_icon_tick">#DADADA</color>
-    <color name="active_prime_layout">#DE040F</color>
-    <color name="inactive_prime_layout">#7D7D7D</color>
+    <color name="recharge_layout">#DE040F</color>
 
     <color name="text_title">#000000</color>
     <color name="text_subtitle">#1E1E1E</color>
