@@ -29,4 +29,11 @@
         <!-- Navigation bar color -->
         <item name="android:navigationBarColor">@color/black</item>
     </style>
+
+    <!-- Ott Activity Theme -->
+    <style name="Theme.Ott" parent="Theme.Vision">
+        <!-- Status bar Transparent -->
+        <item name="android:windowTranslucentStatus">true</item>
+    </style>
+
 </resources>

@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.one.vision.databinding.MovieSlideItemBinding
+import com.one.vision.databinding.MovieCardBinding
 import com.one.vision.models.Movie
 
 class PopularSeriesAdapter  : RecyclerView.Adapter<PopularSeriesAdapter.PopularSeriesViewHolder>(){
@@ -20,7 +20,7 @@ class PopularSeriesAdapter  : RecyclerView.Adapter<PopularSeriesAdapter.PopularS
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PopularSeriesViewHolder {
-        return PopularSeriesViewHolder(MovieSlideItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+        return PopularSeriesViewHolder(MovieCardBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
 
     override fun onBindViewHolder(holder: PopularSeriesViewHolder, position: Int) {
@@ -40,6 +40,6 @@ class PopularSeriesAdapter  : RecyclerView.Adapter<PopularSeriesAdapter.PopularS
         return moviesList.size
     }
 
-    inner class PopularSeriesViewHolder(val binding: MovieSlideItemBinding) : RecyclerView.ViewHolder(binding.root)
+    inner class PopularSeriesViewHolder(val binding: MovieCardBinding) : RecyclerView.ViewHolder(binding.root)
 
 }

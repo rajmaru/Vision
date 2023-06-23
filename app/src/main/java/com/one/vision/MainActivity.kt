@@ -23,6 +23,7 @@ import com.one.vision.adapters.TopRatedAdapter
 import com.one.vision.databinding.ActivityMainBinding
 import com.one.vision.itemdecoration.CustomItemMargin
 import com.one.vision.models.Movie
+import com.one.vision.models.Ott
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.util.Timer
@@ -38,7 +39,7 @@ class MainActivity : AppCompatActivity() {
 
     private var sliderList = ArrayList<Movie>()
     private var top10List = ArrayList<Movie>()
-    private var ottList = ArrayList<Int>()
+    private var ottList = ArrayList<Ott>()
     private var topRatedList = ArrayList<Movie>()
     private var languagesList = ArrayList<Int>()
     private var popularMoviesList = ArrayList<Movie>()
@@ -164,14 +165,14 @@ class MainActivity : AppCompatActivity() {
 
     private fun getOttData() {
         ottList.apply {
-            add(R.drawable.ic_disney_hotstar)
-            add(R.drawable.ic_primevideo)
-            add(R.drawable.ic_netflix)
-            add(R.drawable.ic_zee5)
-            add(R.drawable.ic_altbalaji)
-            add(R.drawable.ic_voot)
-            add(R.drawable.ic_jiocinema)
-            add(R.drawable.ic_sonyliv)
+            add(Ott("Disney+ Hotstar", R.drawable.ic_disney_hotstar))
+            add(Ott("Prime Video", R.drawable.ic_primevideo))
+            add(Ott("Netflix", R.drawable.ic_netflix))
+            add(Ott("Zee5", R.drawable.ic_zee5))
+            add(Ott("Alt Balaji", R.drawable.ic_altbalaji))
+            add(Ott("Voot", R.drawable.ic_voot))
+            add(Ott("Jio Cinema", R.drawable.ic_jiocinema))
+            add(Ott("Sony Liv", R.drawable.ic_sonyliv))
         }
         setOttData()
     }
@@ -655,6 +656,12 @@ class MainActivity : AppCompatActivity() {
                 changeIndicator(indicatorsPosition)
             }
         })
+
+        ottAdapter.onItemClick = {
+            startActivity(Intent(this, OttActivity::class.java))
+            overridePendingTransition(R.anim.slide_in_right,
+                R.anim.slide_out_left)
+        }
     }
 
 }
