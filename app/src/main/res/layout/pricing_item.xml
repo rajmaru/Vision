@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/pricing_plan_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        app:cardBackgroundColor="@color/btm_sheet_surface"
+        app:cardElevation="2dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:strokeWidth="0dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/pricing_plan_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/poppins_bold"
+                android:text="Free"
+                android:textColor="@color/text_title"
+                android:textSize="22sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                app:layout_constraintBottom_toTopOf="@id/about_current_plan_barrier1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/pricing_plan_tv">
+
+                <ImageView
+                    android:id="@+id/pricing_free_movies_tick"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_tick_filled"
+                    app:tint="@color/inactive_icon_tick" />
+
+                <TextView
+                    android:id="@+id/pricing_free_movies_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="3dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="Free Movies / Series"
+                    android:textColor="@color/text_subtitle"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/pricing_free_movies_tick"
+                    app:layout_constraintStart_toEndOf="@+id/pricing_free_movies_tick"
+                    app:layout_constraintTop_toTopOf="@id/pricing_free_movies_tick" />
+
+                <ImageView
+                    android:id="@+id/pricing_live_tv_tick"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintStart_toStartOf="@+id/pricing_free_movies_tick"
+                    app:layout_constraintTop_toBottomOf="@+id/pricing_free_movies_tick"
+                    app:srcCompat="@drawable/ic_tick_filled"
+                    app:tint="@color/inactive_icon_tick" />
+
+                <TextView
+                    android:id="@+id/pricing_live_tv_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="Live TV"
+                    android:textColor="@color/text_subtitle"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/pricing_live_tv_tick"
+                    app:layout_constraintStart_toStartOf="@+id/pricing_free_movies_title"
+                    app:layout_constraintTop_toTopOf="@+id/pricing_live_tv_tick" />
+
+                <ImageView
+                    android:id="@+id/pricing_prime_movies_tick"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintStart_toStartOf="@+id/pricing_live_tv_tick"
+                    app:layout_constraintTop_toBottomOf="@+id/pricing_live_tv_tick"
+                    app:srcCompat="@drawable/ic_tick_filled"
+                    app:tint="@color/inactive_icon_tick" />
+
+                <TextView
+                    android:id="@+id/pricing_prime_movies_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="Prime Movies / Series"
+                    android:textColor="@color/text_subtitle"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/pricing_prime_movies_tick"
+                    app:layout_constraintStart_toStartOf="@+id/pricing_live_tv_title"
+                    app:layout_constraintTop_toTopOf="@id/pricing_prime_movies_tick" />
+
+                <ImageView
+                    android:id="@+id/pricing_request_movies_tick"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintStart_toStartOf="@+id/pricing_prime_movies_tick"
+                    app:layout_constraintTop_toBottomOf="@+id/pricing_prime_movies_tick"
+                    app:srcCompat="@drawable/ic_tick_filled"
+                    app:tint="@color/inactive_icon_tick" />
+
+                <TextView
+                    android:id="@+id/pricing_request_movie_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="Request Movies / Series"
+                    android:textColor="@color/text_subtitle"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/pricing_request_movies_tick"
+                    app:layout_constraintStart_toStartOf="@+id/pricing_prime_movies_title"
+                    app:layout_constraintTop_toBottomOf="@+id/pricing_prime_movies_title"
+                    app:layout_constraintTop_toTopOf="@id/pricing_request_movies_tick" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.Barrier
+                android:id="@+id/about_current_plan_barrier1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:barrierDirection="top"
+                app:constraint_referenced_ids="linearLayout2" />
+
+            <LinearLayout
+                android:id="@+id/linearLayout2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <TextView
+                    android:id="@+id/pricing_recharge_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/subs_button_ripple"
+                    android:backgroundTint="@color/recharge_layout"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:fontFamily="@font/poppins_bold"
+                    android:gravity="center"
+                    android:paddingTop="9dp"
+                    android:paddingBottom="6dp"
+                    android:text="Recharge "
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

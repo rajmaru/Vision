@@ -46,7 +46,12 @@ class AboutActivity : AppCompatActivity() {
         }
 
         binding.aboutBackButton.setOnClickListener{
-            finish()
+            onBackPressed()
+        }
+
+        binding.aboutPlansBtn.setOnClickListener {
+            val pricingBottomSheet = PricingBottomSheet()
+            pricingBottomSheet.show(supportFragmentManager, "PRICING_BOTTOMSHEET")
         }
     }
 

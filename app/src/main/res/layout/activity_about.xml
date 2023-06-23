@@ -12,7 +12,6 @@
         android:id="@+id/about_app_version"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="3dp"
         android:layout_marginBottom="20dp"
         android:alpha="0.4"
         android:fontFamily="@font/poppins_regular"
@@ -21,9 +20,7 @@
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/about_guideline_right"
-        app:layout_constraintStart_toStartOf="@+id/about_guideline_left"
-        app:layout_constraintTop_toBottomOf="@+id/about_prime_movies_title"
-        app:layout_constraintTop_toTopOf="@id/about_request_movies_tick" />
+        app:layout_constraintStart_toStartOf="@+id/about_guideline_left" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/about_guideline_left"
@@ -166,7 +163,7 @@
     </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/about_current_plan_layout"
+        android:id="@+id/pricing_recharge_btn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -344,18 +341,18 @@
                 app:layout_constraintStart_toStartOf="parent">
 
                 <TextView
-                    android:id="@+id/about_current_plan_button"
+                    android:id="@+id/about_plans_btn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/subs_button_ripple"
                     android:backgroundTint="@color/recharge_layout"
                     android:clickable="true"
                     android:focusable="true"
-                    android:fontFamily="@font/gilroy_bold"
+                    android:fontFamily="@font/poppins_bold"
                     android:gravity="center"
-                    android:paddingTop="12dp"
-                    android:paddingBottom="12dp"
-                    android:text="Recharge"
+                    android:paddingTop="9dp"
+                    android:paddingBottom="6dp"
+                    android:text="Plans "
                     android:textColor="@color/white"
                     android:textSize="14sp" />
             </LinearLayout>

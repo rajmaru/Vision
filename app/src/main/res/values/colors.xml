@@ -6,6 +6,10 @@
     <color name="theme">#CD000A</color>
     <color name="background">#F4F4F4</color>
     <color name="surface">#FFFFFF</color>
+    <color name="btm_sheet_background">#F4F4F4</color>
+    <color name="btm_sheet_divider">#B9B9B9</color>
+    <color name="btm_sheet_surface">#FFFFFF</color>
+
     <color name="active_icon_tick">#1CBC1C</color>
     <color name="inactive_icon_tick">#DADADA</color>
     <color name="recharge_layout">#DE040F</color>
