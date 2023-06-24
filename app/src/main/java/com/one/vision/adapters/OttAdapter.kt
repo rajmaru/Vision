@@ -1,13 +1,10 @@
 package com.one.vision.adapters
 
 import android.content.Context
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.one.vision.OttActivity
-import com.one.vision.R
 import com.one.vision.databinding.OttRvItemBinding
 import com.one.vision.models.Ott
 

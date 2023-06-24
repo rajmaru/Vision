@@ -410,10 +410,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun getLanguagesData() {
         languagesList.apply {
-            add(R.drawable.languages_hindi)
-            add(R.drawable.languages_marathi)
-            add(R.drawable.languages_gujarati)
-            add(R.drawable.languages_english)
+            add(R.drawable.language_eng)
+            add(R.drawable.language_hindi)
+            add(R.drawable.language_marathi)
+            add(R.drawable.language_gujarati)
         }
         setLanguagesData()
     }
@@ -659,7 +659,7 @@ class MainActivity : AppCompatActivity() {
         })
 
         ottAdapter.onItemClick = {
-            startActivity(Intent(this, OttActivity::class.java))
+            startActivity(Intent(this, TagActivity::class.java))
             overridePendingTransition(R.anim.slide_in_right,
                 R.anim.slide_out_left)
         }

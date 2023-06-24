@@ -16,7 +16,7 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".OttActivity"
+            android:name=".TagActivity"
             android:theme="@style/Theme.Ott"
             android:exported="false" />
         <activity

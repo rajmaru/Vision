@@ -6,11 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.one.vision.databinding.MovieCardBinding
-import com.one.vision.databinding.OttMoviesCardBinding
+import com.one.vision.databinding.TagMoviesCardBinding
 import com.one.vision.models.Movie
 
-class OttPopularAdapter  : RecyclerView.Adapter<OttPopularAdapter.OttPopularViewHolder>(){
+class TagMoviesAdapter  : RecyclerView.Adapter<TagMoviesAdapter.TagMoviesViewHolder>(){
     private lateinit var context: Context
     private lateinit var moviesList: ArrayList<Movie>
 
@@ -20,11 +19,11 @@ class OttPopularAdapter  : RecyclerView.Adapter<OttPopularAdapter.OttPopularView
         notifyDataSetChanged()
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OttPopularViewHolder {
-        return OttPopularViewHolder(OttMoviesCardBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TagMoviesViewHolder {
+        return TagMoviesViewHolder(TagMoviesCardBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
 
-    override fun onBindViewHolder(holder: OttPopularViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: TagMoviesViewHolder, position: Int) {
         if(moviesList[position].isPrime!!){
             holder.binding.ottMovieCardPrimeIconLayout.visibility = View.VISIBLE
         }else{
@@ -39,6 +38,6 @@ class OttPopularAdapter  : RecyclerView.Adapter<OttPopularAdapter.OttPopularView
         return moviesList.size
     }
 
-    inner class OttPopularViewHolder(val binding: OttMoviesCardBinding) : RecyclerView.ViewHolder(binding.root)
+    inner class TagMoviesViewHolder(val binding: TagMoviesCardBinding) : RecyclerView.ViewHolder(binding.root)
 
 }
