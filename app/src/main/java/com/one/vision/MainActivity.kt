@@ -412,6 +412,7 @@ class MainActivity : AppCompatActivity() {
         languagesList.apply {
             add(R.drawable.languages_hindi)
             add(R.drawable.languages_marathi)
+            add(R.drawable.languages_gujarati)
             add(R.drawable.languages_english)
         }
         setLanguagesData()
