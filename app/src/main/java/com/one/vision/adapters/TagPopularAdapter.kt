@@ -25,13 +25,13 @@ class TagPopularAdapter  : RecyclerView.Adapter<TagPopularAdapter.TagPopularView
 
     override fun onBindViewHolder(holder: TagPopularViewHolder, position: Int) {
         if(moviesList[position].isPrime!!){
-            holder.binding.ottMovieCardPrimeIconLayout.visibility = View.VISIBLE
+            holder.binding.tagMovieCardPrimeIconLayout.visibility = View.VISIBLE
         }else{
-            holder.binding.ottMovieCardPrimeIconLayout.visibility = View.GONE
+            holder.binding.tagMovieCardPrimeIconLayout.visibility = View.GONE
         }
         Glide.with(context.applicationContext)
             .load(moviesList[position].image)
-            .into(holder.binding.ottCardImage)
+            .into(holder.binding.tagCardImage)
     }
 
     override fun getItemCount(): Int {

@@ -23,7 +23,7 @@ import com.one.vision.adapters.TopRatedAdapter
 import com.one.vision.databinding.ActivityMainBinding
 import com.one.vision.itemdecoration.CustomItemMargin
 import com.one.vision.models.Movie
-import com.one.vision.models.Ott
+import com.one.vision.models.Tag
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.util.Timer
@@ -39,9 +39,9 @@ class MainActivity : AppCompatActivity() {
 
     private var sliderList = ArrayList<Movie>()
     private var top10List = ArrayList<Movie>()
-    private var ottList = ArrayList<Ott>()
+    private var tagList = ArrayList<Tag>()
     private var topRatedList = ArrayList<Movie>()
-    private var languagesList = ArrayList<Int>()
+    private var languagesList = ArrayList<Tag>()
     private var popularMoviesList = ArrayList<Movie>()
     private var popularSeriesList = ArrayList<Movie>()
 
@@ -164,21 +164,21 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun getOttData() {
-        ottList.apply {
-            add(Ott("Disney+ Hotstar", R.drawable.ic_disney_hotstar))
-            add(Ott("Prime Video", R.drawable.ic_primevideo))
-            add(Ott("Netflix", R.drawable.ic_netflix))
-            add(Ott("Zee5", R.drawable.ic_zee5))
-            add(Ott("Alt Balaji", R.drawable.ic_altbalaji))
-            add(Ott("Voot", R.drawable.ic_voot))
-            add(Ott("Jio Cinema", R.drawable.ic_jiocinema))
-            add(Ott("Sony Liv", R.drawable.ic_sonyliv))
+        tagList.apply {
+            add(Tag("Disney+ Hotstar", R.drawable.ic_disney_hotstar))
+            add(Tag("Prime Video", R.drawable.ic_primevideo))
+            add(Tag("Netflix", R.drawable.ic_netflix))
+            add(Tag("Zee5", R.drawable.ic_zee5))
+            add(Tag("Alt Balaji", R.drawable.ic_altbalaji))
+            add(Tag("Voot", R.drawable.ic_voot))
+            add(Tag("Jio Cinema", R.drawable.ic_jiocinema))
+            add(Tag("Sony Liv", R.drawable.ic_sonyliv))
         }
         setOttData()
     }
 
     private fun setOttData() {
-        ottAdapter.setOttList(this, ottList)
+        ottAdapter.setOttList(this, tagList)
         binding.ottRv.apply {
             addItemDecoration(customItemMargin)
             adapter = ottAdapter
@@ -410,10 +410,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun getLanguagesData() {
         languagesList.apply {
-            add(R.drawable.language_eng)
-            add(R.drawable.language_hindi)
-            add(R.drawable.language_marathi)
-            add(R.drawable.language_gujarati)
+            add(Tag("English",R.drawable.language_eng))
+            add(Tag("Hindi",R.drawable.language_hindi))
+            add(Tag("Marathi",R.drawable.language_marathi))
+            add(Tag("Gujarati",R.drawable.language_gujarati))
         }
         setLanguagesData()
     }
@@ -659,7 +659,17 @@ class MainActivity : AppCompatActivity() {
         })
 
         ottAdapter.onItemClick = {
-            startActivity(Intent(this, TagActivity::class.java))
+            val intent = Intent(this, TagActivity::class.java)
+            intent.putExtra("TAG",it.name)
+            startActivity(intent)
+            overridePendingTransition(R.anim.slide_in_right,
+                R.anim.slide_out_left)
+        }
+
+        languagesAdapter.onItemClick = {
+            val intent = Intent(this, TagActivity::class.java)
+            intent.putExtra("TAG",it.name)
+            startActivity(intent)
             overridePendingTransition(R.anim.slide_in_right,
                 R.anim.slide_out_left)
         }

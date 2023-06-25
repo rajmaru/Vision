@@ -25,13 +25,13 @@ class TagSeriesAdapter  : RecyclerView.Adapter<TagSeriesAdapter.TagSeriesViewHol
 
     override fun onBindViewHolder(holder: TagSeriesViewHolder, position: Int) {
         if(moviesList[position].isPrime!!){
-            holder.binding.ottMovieCardPrimeIconLayout.visibility = View.VISIBLE
+            holder.binding.tagMovieCardPrimeIconLayout.visibility = View.VISIBLE
         }else{
-            holder.binding.ottMovieCardPrimeIconLayout.visibility = View.GONE
+            holder.binding.tagMovieCardPrimeIconLayout.visibility = View.GONE
         }
         Glide.with(context.applicationContext)
             .load(moviesList[position].image)
-            .into(holder.binding.ottCardImage)
+            .into(holder.binding.tagCardImage)
     }
 
     override fun getItemCount(): Int {

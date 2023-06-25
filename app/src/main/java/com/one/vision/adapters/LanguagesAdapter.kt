@@ -6,12 +6,14 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.one.vision.databinding.LanguagesItemBinding
+import com.one.vision.models.Tag
 
 class LanguagesAdapter : RecyclerView.Adapter<LanguagesAdapter.LanguagesViewHolder>(){
     private lateinit var context: Context
-    private lateinit var languagesList: ArrayList<Int>
+    private lateinit var languagesList: ArrayList<Tag>
+    var onItemClick: ((Tag) -> Unit)? = null
 
-    fun setLanguagesList(context: Context, languagesList: ArrayList<Int>){
+    fun setLanguagesList(context: Context, languagesList: ArrayList<Tag>){
         this.context = context
         this.languagesList = languagesList
         notifyDataSetChanged()
@@ -23,8 +25,11 @@ class LanguagesAdapter : RecyclerView.Adapter<LanguagesAdapter.LanguagesViewHold
 
     override fun onBindViewHolder(holder: LanguagesViewHolder, position: Int) {
         Glide.with(context.applicationContext)
-            .load(languagesList[position])
+            .load(languagesList[position].image)
             .into(holder.binding.languagesImg)
+        holder.itemView.setOnClickListener {
+            onItemClick?.invoke(languagesList[position])
+        }
     }
 
     override fun getItemCount(): Int {

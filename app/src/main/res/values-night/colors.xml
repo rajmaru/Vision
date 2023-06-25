@@ -6,9 +6,13 @@
     <color name="theme">#E50914</color>
     <color name="background">#000000</color>
     <color name="surface">#1A1A1A</color>
+
     <color name="btm_sheet_background">#0E0E0E</color>
     <color name="btm_sheet_divider">#505050</color>
     <color name="btm_sheet_surface">#1A1A1A</color>
+
+    <color name="tag_bg_gradient">#01013D</color>
+    <color name="tag_background">#0052B8</color>
 
     <color name="active_icon_tick">#00FF00</color>
     <color name="inactive_icon_tick">#ED5E5E5E</color>
