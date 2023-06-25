@@ -22,8 +22,8 @@
 
         <ImageView
             android:id="@+id/languages_img"
-            android:layout_width="140dp"
-            android:layout_height="70dp"
+            android:layout_width="120dp"
+            android:layout_height="55dp"
             android:scaleType="centerCrop"
             app:srcCompat="@drawable/language_eng" />
     </androidx.cardview.widget.CardView>

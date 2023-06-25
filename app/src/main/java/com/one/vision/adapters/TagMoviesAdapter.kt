@@ -30,7 +30,7 @@ class TagMoviesAdapter  : RecyclerView.Adapter<TagMoviesAdapter.TagMoviesViewHol
             holder.binding.tagMovieCardPrimeIconLayout.visibility = View.GONE
         }
         Glide.with(context.applicationContext)
-            .load(moviesList[position].image)
+            .load(moviesList[position].poster)
             .into(holder.binding.tagCardImage)
     }
 

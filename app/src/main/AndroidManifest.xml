@@ -16,17 +16,21 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".TagActivity"
-            android:theme="@style/Theme.Ott"
+            android:name=".activities.MovieActivity"
+            android:exported="false"
+            android:theme="@style/Theme.FullScreen"/>
+        <activity
+            android:name=".activities.TagActivity"
+            android:exported="false"
+            android:theme="@style/Theme.FullScreen" />
+        <activity
+            android:name=".activities.AboutActivity"
             android:exported="false" />
         <activity
-            android:name=".AboutActivity"
+            android:name=".activities.HomeActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
-            android:exported="false" />
-        <activity
-            android:name=".SignInActivity"
+            android:name=".activities.SignInActivity"
             android:exported="true"
             android:theme="@style/Theme.CustomSplashScreenTheme">
             <intent-filter>

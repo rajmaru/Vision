@@ -12,6 +12,7 @@ import com.one.vision.models.Movie
 class HomeSliderAdapter : RecyclerView.Adapter<HomeSliderAdapter.HomeSliderViewHolder>(){
     private lateinit var context: Context
     private lateinit var moviesList: ArrayList<Movie>
+    var onItemClick: ((Movie) -> Unit)? = null
 
     fun setMoviesList(context: Context, moviesList: ArrayList<Movie>){
         this.context = context
@@ -31,8 +32,11 @@ class HomeSliderAdapter : RecyclerView.Adapter<HomeSliderAdapter.HomeSliderViewH
             holder.binding.homeSliderPrimeIconLayout.visibility = View.GONE
         }
         Glide.with(context.applicationContext)
-            .load(moviesList[position].image)
+            .load(moviesList[position].poster)
             .into(holder.binding.homeSliderImage)
+        holder.itemView.setOnClickListener {
+            onItemClick?.invoke(moviesList[position])
+        }
     }
 
     override fun getItemCount(): Int {

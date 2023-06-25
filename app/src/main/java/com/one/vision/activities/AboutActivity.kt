@@ -1,4 +1,4 @@
-package com.one.vision
+package com.one.vision.activities
 
 import android.content.Intent
 import android.os.Bundle
@@ -11,7 +11,9 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import com.one.vision.R
 import com.one.vision.databinding.ActivityAboutBinding
+import com.one.vision.fragments.PricingBottomSheet
 
 class AboutActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAboutBinding
@@ -81,7 +83,9 @@ class AboutActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
         super.onBackPressed()
-        overridePendingTransition(R.anim.slide_in_left,
-            R.anim.slide_out_right)
+        overridePendingTransition(
+            R.anim.slide_in_left,
+            R.anim.slide_out_right
+        )
     }
 }

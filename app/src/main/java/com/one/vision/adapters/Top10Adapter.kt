@@ -12,6 +12,7 @@ import com.one.vision.models.Movie
 class Top10Adapter : RecyclerView.Adapter<Top10Adapter.Top10ViewHolder>(){
     private lateinit var context: Context
     private lateinit var moviesList: ArrayList<Movie>
+    var onItemClick: ((Movie) -> Unit)? = null
 
     fun setMoviesList(context: Context, moviesList: ArrayList<Movie>){
         this.context = context
@@ -32,8 +33,11 @@ class Top10Adapter : RecyclerView.Adapter<Top10Adapter.Top10ViewHolder>(){
         holder.binding.top10Number.visibility = View.VISIBLE
         holder.binding.top10Number.text = "${position + 1}"
         Glide.with(context.applicationContext)
-            .load(moviesList[position].image)
+            .load(moviesList[position].poster)
             .into(holder.binding.top10Image)
+        holder.itemView.setOnClickListener {
+            onItemClick?.invoke(moviesList[position])
+        }
     }
 
     override fun getItemCount(): Int {

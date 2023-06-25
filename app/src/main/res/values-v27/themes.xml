@@ -19,7 +19,7 @@
     </style>
 
     <!-- Ott Activity Theme -->
-    <style name="Theme.Ott" parent="Theme.Vision">
+    <style name="Theme.FullScreen" parent="Theme.Vision">
         <!-- Status bar Transparent -->
         <item name="android:windowTranslucentStatus">true</item>
         <item name="android:windowLightStatusBar">false</item>

@@ -12,6 +12,7 @@ import com.one.vision.models.Movie
 class PopularMoviesAdapter : RecyclerView.Adapter<PopularMoviesAdapter.PopularMoviesViewHolder>(){
     private lateinit var context: Context
     private lateinit var moviesList: ArrayList<Movie>
+    var onItemClick: ((Movie) -> Unit)? = null
 
     fun setMoviesList(context: Context, moviesList: ArrayList<Movie>){
         this.context = context
@@ -32,8 +33,11 @@ class PopularMoviesAdapter : RecyclerView.Adapter<PopularMoviesAdapter.PopularMo
         holder.binding.movieSlideRatingsTv.visibility = View.GONE
         holder.binding.movieSlideStarIcon.visibility = View.GONE
         Glide.with(context.applicationContext)
-            .load(moviesList[position].image)
+            .load(moviesList[position].poster)
             .into(holder.binding.movieSlideImage)
+        holder.itemView.setOnClickListener {
+            onItemClick?.invoke(moviesList[position])
+        }
     }
 
     override fun getItemCount(): Int {

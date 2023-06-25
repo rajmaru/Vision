@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="#0052B8"
     android:fitsSystemWindows="true"
-    tools:context=".TagActivity">
+    tools:context=".activities.TagActivity">
 
     <ImageView
         android:id="@+id/tag_background_gradient"
@@ -118,7 +118,7 @@
     </androidx.core.widget.NestedScrollView>
 
     <TextView
-        android:id="@+id/tag_toolbar"
+        android:id="@+id/tag_toolbar_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="#1A1A1A"

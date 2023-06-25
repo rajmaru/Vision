@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".activities.HomeActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -65,7 +65,6 @@
                     android:id="@+id/top10_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="2dp"
                     android:layout_marginTop="12dp"
                     android:fontFamily="@font/gilroy_bold"
                     android:text="Top 10"
@@ -88,7 +87,6 @@
                     android:id="@+id/top_rated_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="2dp"
                     android:layout_marginTop="16dp"
                     android:fontFamily="@font/gilroy_bold"
                     android:text="Top Rated"
@@ -111,7 +109,6 @@
                     android:id="@+id/languages_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="2dp"
                     android:layout_marginTop="16dp"
                     android:fontFamily="@font/gilroy_bold"
                     android:text="Languages"
@@ -134,7 +131,6 @@
                     android:id="@+id/popular_movies_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="2dp"
                     android:layout_marginTop="16dp"
                     android:fontFamily="@font/gilroy_bold"
                     android:text="Popular Movies"
@@ -157,7 +153,6 @@
                     android:id="@+id/popular_series_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="2dp"
                     android:layout_marginTop="16dp"
                     android:fontFamily="@font/gilroy_bold"
                     android:text="Popular Series"

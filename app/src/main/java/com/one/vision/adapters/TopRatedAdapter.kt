@@ -12,6 +12,7 @@ import com.one.vision.models.Movie
 class TopRatedAdapter  : RecyclerView.Adapter<TopRatedAdapter.TopRatedViewHolder>(){
     private lateinit var context: Context
     private lateinit var moviesList: ArrayList<Movie>
+    var onItemClick: ((Movie) -> Unit)? = null
 
     fun setMoviesList(context: Context, moviesList: ArrayList<Movie>){
         this.context = context
@@ -31,8 +32,11 @@ class TopRatedAdapter  : RecyclerView.Adapter<TopRatedAdapter.TopRatedViewHolder
         }
         holder.binding.movieSlideRatingsTv.text = moviesList[position].rating
         Glide.with(context.applicationContext)
-            .load(moviesList[position].image)
+            .load(moviesList[position].poster)
             .into(holder.binding.movieSlideImage)
+        holder.itemView.setOnClickListener {
+            onItemClick?.invoke(moviesList[position])
+        }
     }
 
     override fun getItemCount(): Int {

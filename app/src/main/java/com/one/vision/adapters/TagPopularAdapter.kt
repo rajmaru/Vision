@@ -30,7 +30,7 @@ class TagPopularAdapter  : RecyclerView.Adapter<TagPopularAdapter.TagPopularView
             holder.binding.tagMovieCardPrimeIconLayout.visibility = View.GONE
         }
         Glide.with(context.applicationContext)
-            .load(moviesList[position].image)
+            .load(moviesList[position].poster)
             .into(holder.binding.tagCardImage)
     }
 

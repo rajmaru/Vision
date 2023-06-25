@@ -1,4 +1,4 @@
-package com.one.vision
+package com.one.vision.activities
 
 import android.content.Intent
 import android.graphics.Color
@@ -16,6 +16,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
+import com.one.vision.R
 import com.one.vision.adapters.SigninOttAdapter
 import com.one.vision.databinding.ActivitySignInBinding
 
@@ -104,7 +105,7 @@ class SignInActivity : AppCompatActivity() {
         val currentUser = auth.currentUser
         if (currentUser != null) {
             // The user is already signed in, navigate to MainActivity
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
             finish()
         }
@@ -142,7 +143,7 @@ class SignInActivity : AppCompatActivity() {
         auth.signInWithCredential(credential)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    startActivity(Intent(this, MainActivity::class.java))
+                    startActivity(Intent(this, HomeActivity::class.java))
                     finish()
                 } else {
                     Log.d("SIGN_IN", "Authentication failed")
