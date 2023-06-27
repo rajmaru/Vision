@@ -23,7 +23,6 @@
         android:id="@+id/movie_play_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
         android:clickable="true"
         android:focusable="true"
@@ -196,7 +195,7 @@
                 android:id="@+id/movie_cast_title"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="2000dp"
+                android:layout_marginTop="20000dp"
                 android:fontFamily="@font/gilroy_bold"
                 android:text="Cast"
                 android:textColor="@color/text_title"
@@ -208,6 +207,29 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/movie_ott_layout"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="20dp"
+        android:clickable="true"
+        android:focusable="true"
+        app:cardCornerRadius="22dp"
+        app:cardElevation="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/movie_back_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/movie_back_button"
+        app:rippleColor="@color/white"
+        app:strokeWidth="0dp">
+
+        <ImageView
+            android:id="@+id/movie_ott_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/ic_disney_hotstar" />
+    </com.google.android.material.card.MaterialCardView>
 
     <TextView
         android:id="@+id/movie_toolbar_title"
@@ -236,29 +258,5 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_left_arrow"
         app:tint="@color/white" />
-
-
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/movie_ott_layout"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="30dp"
-        android:clickable="true"
-        android:focusable="true"
-        app:cardCornerRadius="12dp"
-        app:cardElevation="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:rippleColor="@color/white"
-        app:strokeWidth="0dp">
-
-        <ImageView
-            android:id="@+id/movie_ott_img"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:scaleType="centerCrop"
-            app:srcCompat="@drawable/ic_disney_hotstar" />
-    </com.google.android.material.card.MaterialCardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
