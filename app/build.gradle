@@ -59,4 +59,6 @@ dependencies {
     //Coroutines
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.6.1'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.0'
+    //Expandable TextView
+    implementation 'io.github.glailton.expandabletextview:expandabletextview:1.0.3'
 }

@@ -17,6 +17,7 @@ import com.one.vision.adapters.TagSeriesAdapter
 import com.one.vision.databinding.ActivityTagBinding
 import com.one.vision.itemdecoration.CustomItemMargin
 import com.one.vision.models.Movie
+import com.one.vision.models.Tag
 
 
 class TagActivity : AppCompatActivity() {
@@ -28,6 +29,11 @@ class TagActivity : AppCompatActivity() {
     private var popularList = ArrayList<Movie>()
     private var moviesList = ArrayList<Movie>()
     private var seriesList = ArrayList<Movie>()
+
+    private var movieTagsList = ArrayList<String?>()
+    private var movieLanguagesList = ArrayList<String?>()
+    private var movieCastsList = ArrayList<Tag?>()
+    private lateinit var movie: Movie
 
     private lateinit var popularAdapter: TagPopularAdapter
     private lateinit var moviesAdapter: TagMoviesAdapter
@@ -206,6 +212,29 @@ class TagActivity : AppCompatActivity() {
         moviesAdapter = TagMoviesAdapter()
         seriesAdapter = TagSeriesAdapter()
         customItemMargin = CustomItemMargin()
+        movieLanguagesList.apply {
+            add("English")
+            add("Hindi")
+        }
+        movieCastsList.apply {
+            add(Tag("Shawn Ashmore",R.drawable.sample_cast_img1))
+            add(Tag("Shawn Ashmore",R.drawable.sample_cast_img1))
+            add(Tag("Shawn Ashmore",R.drawable.sample_cast_img1))
+        }
+        movie =  Movie(
+            "0001",
+            "https://m.media-amazon.com/images/I/91A9U++FKnL._AC_SL1500_.jpg",
+            "Aftermath",
+            "4.5",
+            "2014",
+            "2h 30m",
+            movieTagsList,
+            "A young couple struggling to stay together, when they are offered an amazing deal on a home with a questionable past that would normally be beyond their means. In a final attempt to start fresh as a couple they take the deal.",
+            movieLanguagesList,
+            movieCastsList,
+            "Disney",
+            true
+        )
     }
 
     private fun onClick() {
@@ -216,61 +245,12 @@ class TagActivity : AppCompatActivity() {
 
     private fun getPopularData() {
         popularList.apply {
-            add(
-                Movie(
-                    "0001",
-                    "Aftermath",
-                    null,
-                    "https://m.media-amazon.com/images/I/91A9U++FKnL._AC_SL1500_.jpg",
-                    "4.5",
-                    "Disney",
-                    true
-                )
-            )
-            add(
-                Movie(
-                    "0001",
-                    "Aftermath",
-                    null,
-                    "https://m.media-amazon.com/images/I/91A9U++FKnL._AC_SL1500_.jpg",
-                    "4.5",
-                    "Disney",
-                    true
-                )
-            )
-            add(
-                Movie(
-                    "0001",
-                    "Aftermath",
-                    null,
-                    "https://m.media-amazon.com/images/I/91A9U++FKnL._AC_SL1500_.jpg",
-                    "4.5",
-                    "Disney",
-                    true
-                )
-            )
-            add(
-                Movie(
-                    "0001",
-                    "Aftermath",
-                    null,
-                    "https://m.media-amazon.com/images/I/91A9U++FKnL._AC_SL1500_.jpg",
-                    "4.5",
-                    "Disney",
-                    true
-                )
-            )
-            add(
-                Movie(
-                    "0001",
-                    "Aftermath",
-                    null,
-                    "https://m.media-amazon.com/images/I/91A9U++FKnL._AC_SL1500_.jpg",
-                    "4.5",
-                    "Disney",
-                    true
-                )
-            )
+            add(movie)
+            add(movie)
+            add(movie)
+            add(movie)
+            add(movie)
+            add(movie)
         }
         setPopularList()
     }
@@ -287,61 +267,12 @@ class TagActivity : AppCompatActivity() {
 
     private fun getMoviesData() {
         moviesList.apply {
-            add(
-                Movie(
-                    "0001",
-                    "Aftermath",
-                    null,
-                    "https://m.media-amazon.com/images/I/91A9U++FKnL._AC_SL1500_.jpg",
-                    "4.5",
-                    "Disney",
-                    true
-                )
-            )
-            add(
-                Movie(
-                    "0001",
-                    "Aftermath",
-                    null,
-                    "https://m.media-amazon.com/images/I/91A9U++FKnL._AC_SL1500_.jpg",
-                    "4.5",
-                    "Disney",
-                    true
-                )
-            )
-            add(
-                Movie(
-                    "0001",
-                    "Aftermath",
-                    null,
-                    "https://m.media-amazon.com/images/I/91A9U++FKnL._AC_SL1500_.jpg",
-                    "4.5",
-                    "Disney",
-                    true
-                )
-            )
-            add(
-                Movie(
-                    "0001",
-                    "Aftermath",
-                    null,
-                    "https://m.media-amazon.com/images/I/91A9U++FKnL._AC_SL1500_.jpg",
-                    "4.5",
-                    "Disney",
-                    true
-                )
-            )
-            add(
-                Movie(
-                    "0001",
-                    "Aftermath",
-                    null,
-                    "https://m.media-amazon.com/images/I/91A9U++FKnL._AC_SL1500_.jpg",
-                    "4.5",
-                    "Disney",
-                    true
-                )
-            )
+            add(movie)
+            add(movie)
+            add(movie)
+            add(movie)
+            add(movie)
+            add(movie)
         }
         setMoviesList()
     }
@@ -358,61 +289,12 @@ class TagActivity : AppCompatActivity() {
 
     private fun getSeriesData() {
         seriesList.apply {
-            add(
-                Movie(
-                    "0001",
-                    "Aftermath",
-                    null,
-                    "https://m.media-amazon.com/images/I/91A9U++FKnL._AC_SL1500_.jpg",
-                    "4.5",
-                    "Disney",
-                    true
-                )
-            )
-            add(
-                Movie(
-                    "0001",
-                    "Aftermath",
-                    null,
-                    "https://m.media-amazon.com/images/I/91A9U++FKnL._AC_SL1500_.jpg",
-                    "4.5",
-                    "Disney",
-                    true
-                )
-            )
-            add(
-                Movie(
-                    "0001",
-                    "Aftermath",
-                    null,
-                    "https://m.media-amazon.com/images/I/91A9U++FKnL._AC_SL1500_.jpg",
-                    "4.5",
-                    "Disney",
-                    true
-                )
-            )
-            add(
-                Movie(
-                    "0001",
-                    "Aftermath",
-                    null,
-                    "https://m.media-amazon.com/images/I/91A9U++FKnL._AC_SL1500_.jpg",
-                    "4.5",
-                    "Disney",
-                    true
-                )
-            )
-            add(
-                Movie(
-                    "0001",
-                    "Aftermath",
-                    null,
-                    "https://m.media-amazon.com/images/I/91A9U++FKnL._AC_SL1500_.jpg",
-                    "4.5",
-                    "Disney",
-                    true
-                )
-            )
+            add(movie)
+            add(movie)
+            add(movie)
+            add(movie)
+            add(movie)
+            add(movie)
         }
         setSeriesList()
     }

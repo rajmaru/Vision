@@ -40,11 +40,17 @@ class HomeActivity : AppCompatActivity() {
 
     private var sliderList = ArrayList<Movie>()
     private var top10List = ArrayList<Movie>()
-    private var tagList = ArrayList<Tag>()
+    private var ottList = ArrayList<Tag>()
     private var topRatedList = ArrayList<Movie>()
     private var languagesList = ArrayList<Tag>()
+
     private var popularMoviesList = ArrayList<Movie>()
     private var popularSeriesList = ArrayList<Movie>()
+
+    private var movieTagsList = ArrayList<String?>()
+    private var movieLanguagesList = ArrayList<String?>()
+    private var movieCastsList = ArrayList<Tag?>()
+    private lateinit var movie: Movie
 
     private lateinit var homeSliderAdapter: HomeSliderAdapter
     private lateinit var top10Adapter: Top10Adapter
@@ -105,6 +111,34 @@ class HomeActivity : AppCompatActivity() {
         popularMoviesAdapter = PopularMoviesAdapter()
         popularSeriesAdapter = PopularSeriesAdapter()
         customItemMargin = CustomItemMargin()
+        movieTagsList.apply {
+            add("Comedy")
+            add("Drama")
+            add("Action")
+        }
+        movieLanguagesList.apply {
+            add("English")
+            add("Hindi")
+        }
+        movieCastsList.apply {
+            add(Tag("Shawn Ashmore",R.drawable.sample_cast_img1))
+            add(Tag("Shawn Ashmore",R.drawable.sample_cast_img1))
+            add(Tag("Shawn Ashmore",R.drawable.sample_cast_img1))
+        }
+        movie =  Movie(
+            "0001",
+            "https://m.media-amazon.com/images/I/91A9U++FKnL._AC_SL1500_.jpg",
+            "Aftermath",
+            "4.5",
+            "2014",
+            "2h 30m",
+            movieTagsList,
+            "A young couple struggling to stay together, when they are offered an amazing deal on a home with a questionable past that would normally be beyond their means. In a final attempt to start fresh as a couple they take the deal.",
+            movieLanguagesList,
+            movieCastsList,
+            "Disney",
+            true
+        )
     }
 
     private fun getUserFromFirebase() {
@@ -123,50 +157,12 @@ class HomeActivity : AppCompatActivity() {
 
     private fun getSliderData() {
         sliderList.apply {
-            add(
-                Movie(
-                    "0001",
-                    "Aftermath",
-                    null,
-                    "https://m.media-amazon.com/images/I/91A9U++FKnL._AC_SL1500_.jpg",
-                    "4.5",
-                    "Disney",
-                    true
-                )
-            )
-            add(
-                Movie(
-                    "0001",
-                    "Aftermath",
-                    null,
-                    "https://m.media-amazon.com/images/I/91A9U++FKnL._AC_SL1500_.jpg",
-                    "4.5",
-                    "Disney",
-                    true
-                )
-            )
-            add(
-                Movie(
-                    "0001",
-                    "Aftermath",
-                    null,
-                    "https://m.media-amazon.com/images/I/91A9U++FKnL._AC_SL1500_.jpg",
-                    "4.5",
-                    "Disney",
-                    true
-                )
-            )
-            add(
-                Movie(
-                    "0001",
-                    "Aftermath",
-                    null,
-                    "https://m.media-amazon.com/images/I/91A9U++FKnL._AC_SL1500_.jpg",
-                    "4.5",
-                    "Disney",
-                    true
-                )
-            )
+            add(movie)
+            add(movie)
+            add(movie)
+            add(movie)
+            add(movie)
+            add(movie)
         }
         setSliderData()
     }
@@ -177,7 +173,7 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun getOttData() {
-        tagList.apply {
+        ottList.apply {
             add(Tag("Disney+ Hotstar", R.drawable.ic_disney_hotstar))
             add(Tag("Prime Video", R.drawable.ic_primevideo))
             add(Tag("Netflix", R.drawable.ic_netflix))
@@ -191,7 +187,7 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun setOttData() {
-        ottAdapter.setOttList(this, tagList)
+        ottAdapter.setOttList(this, ottList)
         binding.ottRv.apply {
             addItemDecoration(customItemMargin)
             adapter = ottAdapter
@@ -202,61 +198,12 @@ class HomeActivity : AppCompatActivity() {
 
     private fun getTop10Data() {
         top10List.apply {
-            add(
-                Movie(
-                    "0001",
-                    "Aftermath",
-                    null,
-                    "https://m.media-amazon.com/images/I/91A9U++FKnL._AC_SL1500_.jpg",
-                    "4.5",
-                    "Disney",
-                    true
-                )
-            )
-            add(
-                Movie(
-                    "0001",
-                    "Aftermath",
-                    null,
-                    "https://m.media-amazon.com/images/I/91A9U++FKnL._AC_SL1500_.jpg",
-                    "4.5",
-                    "Disney",
-                    true
-                )
-            )
-            add(
-                Movie(
-                    "0001",
-                    "Aftermath",
-                    null,
-                    "https://m.media-amazon.com/images/I/91A9U++FKnL._AC_SL1500_.jpg",
-                    "4.5",
-                    "Disney",
-                    true
-                )
-            )
-            add(
-                Movie(
-                    "0001",
-                    "Aftermath",
-                    null,
-                    "https://m.media-amazon.com/images/I/91A9U++FKnL._AC_SL1500_.jpg",
-                    "4.5",
-                    "Disney",
-                    true
-                )
-            )
-            add(
-                Movie(
-                    "0001",
-                    "Aftermath",
-                    null,
-                    "https://m.media-amazon.com/images/I/91A9U++FKnL._AC_SL1500_.jpg",
-                    "4.5",
-                    "Disney",
-                    true
-                )
-            )
+            add(movie)
+            add(movie)
+            add(movie)
+            add(movie)
+            add(movie)
+            add(movie)
         }
         setTop10List()
     }
@@ -301,61 +248,12 @@ class HomeActivity : AppCompatActivity() {
 
     private fun getTopRatedData() {
         topRatedList.apply {
-            add(
-                Movie(
-                    "0001",
-                    "Aftermath",
-                    null,
-                    "https://m.media-amazon.com/images/I/91A9U++FKnL._AC_SL1500_.jpg",
-                    "4.5",
-                    "Disney",
-                    true
-                )
-            )
-            add(
-                Movie(
-                    "0001",
-                    "Aftermath",
-                    null,
-                    "https://m.media-amazon.com/images/I/91A9U++FKnL._AC_SL1500_.jpg",
-                    "4.5",
-                    "Disney",
-                    true
-                )
-            )
-            add(
-                Movie(
-                    "0001",
-                    "Aftermath",
-                    null,
-                    "https://m.media-amazon.com/images/I/91A9U++FKnL._AC_SL1500_.jpg",
-                    "4.5",
-                    "Disney",
-                    true
-                )
-            )
-            add(
-                Movie(
-                    "0001",
-                    "Aftermath",
-                    null,
-                    "https://m.media-amazon.com/images/I/91A9U++FKnL._AC_SL1500_.jpg",
-                    "4.5",
-                    "Disney",
-                    true
-                )
-            )
-            add(
-                Movie(
-                    "0001",
-                    "Aftermath",
-                    null,
-                    "https://m.media-amazon.com/images/I/91A9U++FKnL._AC_SL1500_.jpg",
-                    "4.5",
-                    "Disney",
-                    true
-                )
-            )
+            add(movie)
+            add(movie)
+            add(movie)
+            add(movie)
+            add(movie)
+            add(movie)
         }
         setTopRatedList()
     }
@@ -392,61 +290,12 @@ class HomeActivity : AppCompatActivity() {
 
     private fun getPopularMoviesData() {
         popularMoviesList.apply {
-            add(
-                Movie(
-                    "0001",
-                    "Aftermath",
-                    null,
-                    "https://m.media-amazon.com/images/I/91A9U++FKnL._AC_SL1500_.jpg",
-                    "4.5",
-                    "Disney",
-                    true
-                )
-            )
-            add(
-                Movie(
-                    "0001",
-                    "Aftermath",
-                    null,
-                    "https://m.media-amazon.com/images/I/91A9U++FKnL._AC_SL1500_.jpg",
-                    "4.5",
-                    "Disney",
-                    true
-                )
-            )
-            add(
-                Movie(
-                    "0001",
-                    "Aftermath",
-                    null,
-                    "https://m.media-amazon.com/images/I/91A9U++FKnL._AC_SL1500_.jpg",
-                    "4.5",
-                    "Disney",
-                    true
-                )
-            )
-            add(
-                Movie(
-                    "0001",
-                    "Aftermath",
-                    null,
-                    "https://m.media-amazon.com/images/I/91A9U++FKnL._AC_SL1500_.jpg",
-                    "4.5",
-                    "Disney",
-                    true
-                )
-            )
-            add(
-                Movie(
-                    "0001",
-                    "Aftermath",
-                    null,
-                    "https://m.media-amazon.com/images/I/91A9U++FKnL._AC_SL1500_.jpg",
-                    "4.5",
-                    "Disney",
-                    true
-                )
-            )
+            add(movie)
+            add(movie)
+            add(movie)
+            add(movie)
+            add(movie)
+            add(movie)
         }
         setPopularMoviesList()
     }
@@ -463,61 +312,12 @@ class HomeActivity : AppCompatActivity() {
 
     private fun getPopularSeriesData() {
         popularSeriesList.apply {
-            add(
-                Movie(
-                    "0001",
-                    "Aftermath",
-                    null,
-                    "https://m.media-amazon.com/images/I/91A9U++FKnL._AC_SL1500_.jpg",
-                    "4.5",
-                    "Disney",
-                    true
-                )
-            )
-            add(
-                Movie(
-                    "0001",
-                    "Aftermath",
-                    null,
-                    "https://m.media-amazon.com/images/I/91A9U++FKnL._AC_SL1500_.jpg",
-                    "4.5",
-                    "Disney",
-                    true
-                )
-            )
-            add(
-                Movie(
-                    "0001",
-                    "Aftermath",
-                    null,
-                    "https://m.media-amazon.com/images/I/91A9U++FKnL._AC_SL1500_.jpg",
-                    "4.5",
-                    "Disney",
-                    true
-                )
-            )
-            add(
-                Movie(
-                    "0001",
-                    "Aftermath",
-                    null,
-                    "https://m.media-amazon.com/images/I/91A9U++FKnL._AC_SL1500_.jpg",
-                    "4.5",
-                    "Disney",
-                    true
-                )
-            )
-            add(
-                Movie(
-                    "0001",
-                    "Aftermath",
-                    null,
-                    "https://m.media-amazon.com/images/I/91A9U++FKnL._AC_SL1500_.jpg",
-                    "4.5",
-                    "Disney",
-                    true
-                )
-            )
+            add(movie)
+            add(movie)
+            add(movie)
+            add(movie)
+            add(movie)
+            add(movie)
         }
         setPopularSeriesList()
     }

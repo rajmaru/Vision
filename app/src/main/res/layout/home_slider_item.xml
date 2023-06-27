@@ -79,7 +79,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="18dp"
-        android:layout_marginBottom="2dp"
         app:cardBackgroundColor="#731A1A1A"
         app:cardCornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="@+id/home_slider_title"
