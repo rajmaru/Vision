@@ -1,0 +1,49 @@
+package com.one.vision.adapters
+
+import android.content.Context
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.one.vision.databinding.TagMoviesCardBinding
+import com.one.vision.databinding.Top10ItemBinding
+import com.one.vision.models.Movie
+
+class MovieRecommendedAdapter   : RecyclerView.Adapter<MovieRecommendedAdapter.MovieRecommendedViewHolder>(){
+    private lateinit var context: Context
+    private lateinit var moviesList: ArrayList<Movie>
+    var onItemClick: ((Movie) -> Unit)? = null
+
+    fun setMoviesList(context: Context, moviesList: ArrayList<Movie>){
+        this.context = context
+        this.moviesList = moviesList
+        notifyDataSetChanged()
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieRecommendedViewHolder {
+        return MovieRecommendedViewHolder(Top10ItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+    }
+
+    override fun onBindViewHolder(holder: MovieRecommendedViewHolder, position: Int) {
+        if(moviesList[position].isPrime!!){
+            holder.binding.top10PrimeIconLayout.visibility = View.VISIBLE
+        }else{
+            holder.binding.top10PrimeIconLayout.visibility = View.GONE
+        }
+        holder.binding.top10Number.visibility = View.GONE
+        Glide.with(context.applicationContext)
+            .load(moviesList[position].poster)
+            .into(holder.binding.top10Image)
+        holder.itemView.setOnClickListener {
+            onItemClick?.invoke(moviesList[position])
+        }
+    }
+
+    override fun getItemCount(): Int {
+        return moviesList.size
+    }
+
+    inner class MovieRecommendedViewHolder(val binding: Top10ItemBinding) : RecyclerView.ViewHolder(binding.root)
+
+}

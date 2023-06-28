@@ -10,9 +10,9 @@ import com.one.vision.models.Tag
 
 class MovieCastAdpater : RecyclerView.Adapter<MovieCastAdpater.MovieCastViewHolder>() {
     private lateinit var context: Context
-    private lateinit var castList: ArrayList<Tag>
+    private lateinit var castList: ArrayList<Tag?>
 
-    fun setOttList(context: Context, castList: ArrayList<Tag>) {
+    fun setCastList(context: Context, castList: ArrayList<Tag?>) {
         this.context = context
         this.castList = castList
         notifyDataSetChanged()
@@ -24,9 +24,9 @@ class MovieCastAdpater : RecyclerView.Adapter<MovieCastAdpater.MovieCastViewHold
 
     override fun onBindViewHolder(holder: MovieCastViewHolder, position: Int) {
         Glide.with(context.applicationContext)
-            .load(context.getDrawable(castList[position].image!!))
+            .load(context.getDrawable(castList[position]?.image!!))
             .into(holder.binding.movieCastImg)
-        holder.binding.movieCastTv.text = castList[position].name
+        holder.binding.movieCastTv.text = castList[position]?.name
     }
 
     override fun getItemCount(): Int {
