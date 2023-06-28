@@ -77,28 +77,40 @@
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/home_slider_img_gradient" />
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/movie_ott_layout"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/movie_prime_icon_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"
-        android:clickable="true"
-        android:focusable="true"
-        app:cardCornerRadius="22dp"
-        app:cardElevation="8dp"
+        android:elevation="20dp"
+        android:visibility="visible"
+        app:cardCornerRadius="18dp"
         app:layout_constraintBottom_toBottomOf="@+id/movie_back_button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/movie_back_button"
-        app:rippleColor="@color/white"
-        app:strokeWidth="0dp">
+        app:layout_constraintTop_toTopOf="@+id/movie_back_button">
 
-        <ImageView
-            android:id="@+id/movie_ott_img"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:scaleType="centerCrop"
-            app:srcCompat="@drawable/ic_disney_hotstar" />
-    </com.google.android.material.card.MaterialCardView>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/prime_bg">
+
+            <ImageView
+                android:id="@+id/movie_prime_icon"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:paddingStart="6dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="6dp"
+                android:paddingBottom="6dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_prime"
+                app:tint="@color/black" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/movie_nested_scrollview"
@@ -290,7 +302,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="50dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -322,7 +334,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="14dp"
-        android:layout_marginTop="46dp"
+        android:layout_marginTop="44dp"
         android:focusable="true"
         android:clickable="true"
         app:strokeWidth="0dp"
@@ -332,8 +344,10 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:paddingEnd="5dp"
+            android:paddingStart="4dp"
             app:srcCompat="@drawable/ic_left_arrow"
             app:tint="@color/white" />
 

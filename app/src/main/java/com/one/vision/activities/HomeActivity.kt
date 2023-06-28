@@ -75,7 +75,7 @@ class HomeActivity : AppCompatActivity() {
         init()
         getUserFromFirebase()
         getSliderData()
-        setIndicators()
+        setSliderIndicator()
         getOttData()
         getTop10Data()
         getTopRatedData()
@@ -84,22 +84,6 @@ class HomeActivity : AppCompatActivity() {
         getPopularSeriesData()
         startAutoSliding()
         onClick()
-
-    }
-
-    private fun onScrollingHideToolbar() {
-        binding.homeNestedScrollview.setOnScrollChangeListener { _, _, scrollY, _, _ ->
-            val deltaY = scrollY - previousScrollY
-            previousScrollY = scrollY
-
-            if (deltaY > 50) {
-                // Scrolled down
-                binding.toolbar.animate().translationY(-binding.toolbar.height.toFloat()).start()
-            } else if (deltaY < 0) {
-                // Scrolled up
-                binding.toolbar.animate().translationY(0f).start()
-            }
-        }
     }
 
     private fun init() {
@@ -121,11 +105,11 @@ class HomeActivity : AppCompatActivity() {
             add("Hindi")
         }
         movieCastsList.apply {
-            add(Tag("Shawn Ashmore",R.drawable.sample_cast_img1))
-            add(Tag("Shawn Ashmore",R.drawable.sample_cast_img1))
-            add(Tag("Shawn Ashmore",R.drawable.sample_cast_img1))
+            add(Tag("Shawn Ashmore", R.drawable.sample_cast_img1))
+            add(Tag("Shawn Ashmore", R.drawable.sample_cast_img1))
+            add(Tag("Shawn Ashmore", R.drawable.sample_cast_img1))
         }
-        movie =  Movie(
+        movie = Movie(
             "0001",
             "https://m.media-amazon.com/images/I/91A9U++FKnL._AC_SL1500_.jpg",
             "Aftermath",
@@ -155,6 +139,21 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
+    private fun onScrollingHideToolbar() {
+        binding.homeNestedScrollview.setOnScrollChangeListener { _, _, scrollY, _, _ ->
+            val deltaY = scrollY - previousScrollY
+            previousScrollY = scrollY
+
+            if (deltaY > 50) {
+                // Scrolled down
+                binding.toolbar.animate().translationY(-binding.toolbar.height.toFloat()).start()
+            } else if (deltaY < 0) {
+                // Scrolled up
+                binding.toolbar.animate().translationY(0f).start()
+            }
+        }
+    }
+
     private fun getSliderData() {
         sliderList.apply {
             add(movie)
@@ -170,6 +169,34 @@ class HomeActivity : AppCompatActivity() {
     private fun setSliderData() {
         homeSliderAdapter.setMoviesList(this, sliderList)
         binding.homeSlider.adapter = homeSliderAdapter
+    }
+
+    private fun setSliderIndicator() {
+        val indicatorsCount = binding.homeSlider.adapter?.itemCount ?: 0
+        indicators = arrayOfNulls(indicatorsCount)
+
+        val layoutParams = LinearLayout.LayoutParams(
+            LinearLayout.LayoutParams.MATCH_PARENT,
+            LinearLayout.LayoutParams.MATCH_PARENT
+        )
+        layoutParams.setMargins(10, 0, 10, 0)
+
+        for (i in 0 until indicatorsCount) {
+            indicators[i] = ImageView(this)
+            indicators[i]?.layoutParams = layoutParams
+            binding.homeSliderDotsLayout.addView(indicators[i])
+        }
+        changeSliderIndicator(indicatorsPosition)
+    }
+
+    private fun changeSliderIndicator(position: Int) {
+        for (i in indicators.indices) {
+            if (i == position) {
+                indicators[i]?.setImageDrawable(getDrawable(R.drawable.home_slider_active_indicator))
+            } else {
+                indicators[i]?.setImageDrawable(getDrawable(R.drawable.home_slider_inactive_indicator))
+            }
+        }
     }
 
     private fun getOttData() {
@@ -215,34 +242,6 @@ class HomeActivity : AppCompatActivity() {
             adapter = top10Adapter
             layoutManager =
                 LinearLayoutManager(this@HomeActivity, LinearLayoutManager.HORIZONTAL, false)
-        }
-    }
-
-    private fun setIndicators() {
-        val indicatorsCount = binding.homeSlider.adapter?.itemCount ?: 0
-        indicators = arrayOfNulls(indicatorsCount)
-
-        val layoutParams = LinearLayout.LayoutParams(
-            LinearLayout.LayoutParams.MATCH_PARENT,
-            LinearLayout.LayoutParams.MATCH_PARENT
-        )
-        layoutParams.setMargins(10, 0, 10, 0)
-
-        for (i in 0 until indicatorsCount) {
-            indicators[i] = ImageView(this)
-            indicators[i]?.layoutParams = layoutParams
-            binding.homeSliderDotsLayout.addView(indicators[i])
-        }
-        changeIndicator(indicatorsPosition)
-    }
-
-    private fun changeIndicator(position: Int) {
-        for (i in indicators.indices) {
-            if (i == position) {
-                indicators[i]?.setImageDrawable(getDrawable(R.drawable.home_slider_active_indicator))
-            } else {
-                indicators[i]?.setImageDrawable(getDrawable(R.drawable.home_slider_inactive_indicator))
-            }
         }
     }
 
@@ -351,97 +350,72 @@ class HomeActivity : AppCompatActivity() {
         timer = null
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        stopAutoSliding()
-    }
-
     private fun onClick() {
         binding.homeProfilePic.setOnClickListener {
             startActivity(Intent(this@HomeActivity, AboutActivity::class.java))
-            overridePendingTransition(
-                R.anim.slide_in_right,
-                R.anim.slide_out_left
-            )
         }
 
         binding.homeSlider.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
                 indicatorsPosition = position
-                changeIndicator(indicatorsPosition)
+                changeSliderIndicator(indicatorsPosition)
             }
         })
 
         homeSliderAdapter.onItemClick = {
-            val intent = Intent(this, MovieActivity::class.java)
-            intent.putExtra("MOVIE", it)
-            startActivity(intent)
-            overridePendingTransition(
-                R.anim.slide_in_right,
-                R.anim.slide_out_left
-            )
+            redirectToMovieActivity(it)
         }
 
         ottAdapter.onItemClick = {
-            val intent = Intent(this, TagActivity::class.java)
-            intent.putExtra("TAG", it.name)
-            startActivity(intent)
-            overridePendingTransition(
-                R.anim.slide_in_right,
-                R.anim.slide_out_left
-            )
+            redirectToTagActivity(it)
         }
 
         top10Adapter.onItemClick = {
-            val intent = Intent(this, MovieActivity::class.java)
-            intent.putExtra("MOVIE", it)
-            startActivity(intent)
-            overridePendingTransition(
-                R.anim.slide_in_right,
-                R.anim.slide_out_left
-            )
+            redirectToMovieActivity(it)
         }
 
         topRatedAdapter.onItemClick = {
-            val intent = Intent(this, MovieActivity::class.java)
-            intent.putExtra("MOVIE", it)
-            startActivity(intent)
-            overridePendingTransition(
-                R.anim.slide_in_right,
-                R.anim.slide_out_left
-            )
+            redirectToMovieActivity(it)
         }
 
         languagesAdapter.onItemClick = {
-            val intent = Intent(this, TagActivity::class.java)
-            intent.putExtra("TAG", it.name)
-            startActivity(intent)
-            overridePendingTransition(
-                R.anim.slide_in_right,
-                R.anim.slide_out_left
-            )
+            redirectToTagActivity(it)
         }
 
         popularMoviesAdapter.onItemClick = {
-            val intent = Intent(this, MovieActivity::class.java)
-            intent.putExtra("MOVIE", it)
-            startActivity(intent)
-            overridePendingTransition(
-                R.anim.slide_in_right,
-                R.anim.slide_out_left
-            )
+            redirectToMovieActivity(it)
         }
 
         popularSeriesAdapter.onItemClick = {
-            val intent = Intent(this, MovieActivity::class.java)
-            intent.putExtra("MOVIE", it)
-            startActivity(intent)
-            overridePendingTransition(
-                R.anim.slide_in_right,
-                R.anim.slide_out_left
-            )
+            redirectToMovieActivity(it)
         }
+    }
+
+    private fun redirectToMovieActivity(movie: Movie){
+        val intent = Intent(this, MovieActivity::class.java)
+        intent.putExtra("MOVIE", movie)
+        startActivity(intent)
+        inAnimation()
+    }
+
+    private fun redirectToTagActivity(tag: Tag){
+        val intent = Intent(this, TagActivity::class.java)
+        intent.putExtra("TAG", tag.name)
+        startActivity(intent)
+        inAnimation()
+    }
+
+    private fun inAnimation() {
+        overridePendingTransition(
+            R.anim.slide_in_right,
+            R.anim.slide_out_left
+        )
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        stopAutoSliding()
     }
 
 }

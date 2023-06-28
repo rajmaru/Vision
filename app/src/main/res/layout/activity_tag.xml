@@ -107,7 +107,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="50dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -134,15 +134,28 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/tag_back_button"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="14dp"
-        android:layout_marginTop="46dp"
+        android:layout_marginTop="44dp"
+        android:focusable="true"
+        android:clickable="true"
+        app:strokeWidth="0dp"
+        app:cardBackgroundColor="@android:color/transparent"
+        app:rippleColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_left_arrow"
-        app:tint="@color/white" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:paddingEnd="5dp"
+            android:paddingStart="4dp"
+            app:srcCompat="@drawable/ic_left_arrow"
+            app:tint="@color/white" />
+
+    </com.google.android.material.card.MaterialCardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

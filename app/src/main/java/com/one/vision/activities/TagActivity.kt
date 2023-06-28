@@ -1,12 +1,12 @@
 package com.one.vision.activities
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -53,158 +53,13 @@ class TagActivity : AppCompatActivity() {
         getMoviesData()
         getSeriesData()
         onClick()
-
     }
 
-    private fun getTag() {
-        tag = intent.getStringExtra("TAG")
-        Log.d("RAJ", tag.toString())
-        setTag()
-    }
-
-    private fun setTag() {
-        if (tag.equals("Disney+ Hotstar")) {
-            onScrollingHideToolbar()
-            binding.tagLogo.setImageResource(R.drawable.tag_disney_logo)
-            binding.tagToolbarTitle.text = tag
-            binding.tagBackgroundGradient.setColorFilter(Color.parseColor("#01013D"))
-            binding.tagRoot.setBackgroundColor(Color.parseColor("#0052B8"))
-        }
-        if (tag.equals("Prime Video")) {
-            onScrollingHideToolbar()
-            binding.tagLogo.setImageResource(R.drawable.tag_primevideo_logo)
-            binding.tagToolbarTitle.text = tag
-            binding.tagBackgroundGradient.setColorFilter(Color.parseColor("#002664"))
-            binding.tagRoot.setBackgroundColor(Color.parseColor("#1AA7D5"))
-        }
-        if (tag.equals("Netflix")) {
-            onScrollingHideToolbar()
-            binding.tagLogo.setImageResource(R.drawable.tag_netflix_logo)
-            binding.tagToolbarTitle.text = tag
-            binding.tagBackgroundGradient.setColorFilter(Color.parseColor("#000000"))
-            binding.tagRoot.setBackgroundColor(Color.parseColor("#000000"))
-        }
-        if (tag.equals("Zee5")) {
-            onScrollingHideToolbar()
-            binding.tagLogo.setImageResource(R.drawable.tag_zee5_logo)
-            binding.tagToolbarTitle.text = tag
-            binding.tagBackgroundGradient.setColorFilter(Color.parseColor("#000000"))
-            binding.tagRoot.setBackgroundColor(Color.parseColor("#000000"))
-        }
-        if (tag.equals("Alt Balaji")) {
-            onScrollingHideToolbar()
-            binding.tagLogo.setImageResource(R.drawable.tag_altbalaji_logo)
-            binding.tagToolbarTitle.text = tag
-            binding.tagBackgroundGradient.setColorFilter(Color.parseColor("#000000"))
-            binding.tagRoot.setBackgroundColor(Color.parseColor("#000000"))
-        }
-        if (tag.equals("Voot")) {
-            onScrollingHideToolbar()
-            binding.tagLogo.setImageResource(R.drawable.tag_voot_logo)
-            binding.tagToolbarTitle.text = tag
-            binding.tagBackgroundGradient.setColorFilter(Color.parseColor("#390065"))
-            binding.tagRoot.setBackgroundColor(Color.parseColor("#7700D4"))
-        }
-        if (tag.equals("Jio Cinema")) {
-            onScrollingHideToolbar()
-            binding.tagLogo.setImageResource(R.drawable.tag_jiocinema_logo)
-            binding.tagToolbarTitle.text = tag
-            binding.tagBackgroundGradient.setColorFilter(Color.parseColor("#7C0053"))
-            binding.tagRoot.setBackgroundColor(Color.parseColor("#D9008D"))
-        }
-        if (tag.equals("Sony Liv")) {
-            onScrollingHideToolbar()
-            binding.tagLogo.setImageResource(R.drawable.tag_sonyliv_logo)
-            binding.tagToolbarTitle.text = tag
-            binding.tagBackgroundGradient.setColorFilter(Color.parseColor("#000000"))
-            binding.tagRoot.setBackgroundColor(Color.parseColor("#000000"))
-        }
-        if (tag.equals("English")) {
-            binding.tagToolbarTitle.alpha = 1f
-            binding.tagBackgroundGradient.visibility = View.GONE
-            binding.tagLogo.visibility = View.GONE
-            val layoutParams = binding.tagPopularTitle.layoutParams as ViewGroup.MarginLayoutParams
-            layoutParams.topMargin = 270
-            binding.tagPopularTitle.layoutParams = layoutParams
-            binding.tagToolbarTitle.text = tag
-            binding.tagRoot.background = ContextCompat.getDrawable(this, R.color.background)
-            binding.tagPopularTitle.setTextColor(resources.getColor(R.color.text_title))
-            binding.tagMoviesTitle.setTextColor(resources.getColor(R.color.text_title))
-            binding.tagSeriesTitle.setTextColor(resources.getColor(R.color.text_title))
-        }
-        if (tag.equals("Hindi")) {
-            binding.tagToolbarTitle.alpha = 1f
-            binding.tagBackgroundGradient.visibility = View.GONE
-            binding.tagLogo.visibility = View.GONE
-            val layoutParams = binding.tagPopularTitle.layoutParams as ViewGroup.MarginLayoutParams
-            layoutParams.topMargin = 270
-            binding.tagPopularTitle.layoutParams = layoutParams
-            binding.tagToolbarTitle.text = tag
-            binding.tagRoot.background = ContextCompat.getDrawable(this, R.color.background)
-            binding.tagPopularTitle.setTextColor(resources.getColor(R.color.text_title))
-            binding.tagMoviesTitle.setTextColor(resources.getColor(R.color.text_title))
-            binding.tagSeriesTitle.setTextColor(resources.getColor(R.color.text_title))
-        }
-        if (tag.equals("Marathi")) {
-            binding.tagToolbarTitle.alpha = 1f
-            binding.tagBackgroundGradient.visibility = View.GONE
-            binding.tagLogo.visibility = View.GONE
-            val layoutParams = binding.tagPopularTitle.layoutParams as ViewGroup.MarginLayoutParams
-            layoutParams.topMargin = 270
-            binding.tagPopularTitle.layoutParams = layoutParams
-            binding.tagToolbarTitle.text = tag
-            binding.tagRoot.background = ContextCompat.getDrawable(this, R.color.background)
-            binding.tagPopularTitle.setTextColor(resources.getColor(R.color.text_title))
-            binding.tagMoviesTitle.setTextColor(resources.getColor(R.color.text_title))
-            binding.tagSeriesTitle.setTextColor(resources.getColor(R.color.text_title))
-        }
-        if (tag.equals("Gujarati")) {
-            binding.tagToolbarTitle.alpha = 1f
-            binding.tagBackgroundGradient.visibility = View.GONE
-            binding.tagLogo.visibility = View.GONE
-            val layoutParams = binding.tagPopularTitle.layoutParams as ViewGroup.MarginLayoutParams
-            layoutParams.topMargin = 270
-            binding.tagPopularTitle.layoutParams = layoutParams
-            binding.tagToolbarTitle.text = tag
-            binding.tagRoot.background = ContextCompat.getDrawable(this, R.color.background)
-            binding.tagPopularTitle.setTextColor(resources.getColor(R.color.text_title))
-            binding.tagMoviesTitle.setTextColor(resources.getColor(R.color.text_title))
-            binding.tagSeriesTitle.setTextColor(resources.getColor(R.color.text_title))
-        }
-    }
-
-    private fun onScrollingHideToolbar() {
-        binding.tagToolbarTitle.alpha = 0f
-        binding.tagNestedScrollview.setOnScrollChangeListener { _, _, scrollY, _, _ ->
-            Log.d("SCROLL_VIEW", scrollY.toString())
-            if (scrollY > 180) {
-                // Scrolled down
-                if (isToolbarShown) {
-                    binding.tagToolbarTitle.animate()
-                        .alpha(1f)
-                        .setDuration(500) // Set the duration of the animation in milliseconds
-                        .start()
-                    binding.tagLogo.animate()
-                        .alpha(0f)
-                        .setDuration(500) // Set the duration of the animation in milliseconds
-                        .start()
-                    isToolbarShown = false
-                }
-            } else if (scrollY < 180) {
-                // Scrolled up
-                if (!isToolbarShown) {
-                    binding.tagToolbarTitle.animate()
-                        .alpha(0f)
-                        .setDuration(500) // Set the duration of the animation in milliseconds
-                        .start()
-                    binding.tagLogo.animate()
-                        .alpha(1f)
-                        .setDuration(500) // Set the duration of the animation in milliseconds
-                        .start()
-                    isToolbarShown = true
-                }
-            }
-        }
+    private fun statusBarTransparent() {
+        window.setFlags(
+            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
+        )
     }
 
     private fun init() {
@@ -237,9 +92,111 @@ class TagActivity : AppCompatActivity() {
         )
     }
 
-    private fun onClick() {
-        binding.tagBackButton.setOnClickListener {
-            onBackPressed()
+    private fun getTag() {
+        tag = intent.getStringExtra("TAG")
+        Log.d("TAG_NAME", tag.toString())
+        setTag()
+    }
+
+    private fun setTag() {
+        when (tag) {
+            "Disney+ Hotstar" -> {
+                onScrollingHideToolbar()
+                binding.tagLogo.setImageResource(R.drawable.tag_disney_logo)
+                binding.tagBackgroundGradient.setColorFilter(Color.parseColor("#01013D"))
+                binding.tagRoot.setBackgroundColor(Color.parseColor("#0052B8"))
+            }
+            "Prime Video" -> {
+                onScrollingHideToolbar()
+                binding.tagLogo.setImageResource(R.drawable.tag_primevideo_logo)
+                binding.tagBackgroundGradient.setColorFilter(Color.parseColor("#002664"))
+                binding.tagRoot.setBackgroundColor(Color.parseColor("#1AA7D5"))
+            }
+            "Netflix" -> {
+                onScrollingHideToolbar()
+                binding.tagLogo.setImageResource(R.drawable.tag_netflix_logo)
+                binding.tagBackgroundGradient.setColorFilter(Color.parseColor("#000000"))
+                binding.tagRoot.setBackgroundColor(Color.parseColor("#000000"))
+            }
+            "Zee5"-> {
+                onScrollingHideToolbar()
+                binding.tagLogo.setImageResource(R.drawable.tag_zee5_logo)
+                binding.tagBackgroundGradient.setColorFilter(Color.parseColor("#000000"))
+                binding.tagRoot.setBackgroundColor(Color.parseColor("#000000"))
+            }
+            "Alt Balaji" -> {
+                onScrollingHideToolbar()
+                binding.tagLogo.setImageResource(R.drawable.tag_altbalaji_logo)
+                binding.tagBackgroundGradient.setColorFilter(Color.parseColor("#000000"))
+                binding.tagRoot.setBackgroundColor(Color.parseColor("#000000"))
+            }
+            "Sony Liv" -> {
+                onScrollingHideToolbar()
+                binding.tagLogo.setImageResource(R.drawable.tag_sonyliv_logo)
+                binding.tagBackgroundGradient.setColorFilter(Color.parseColor("#000000"))
+                binding.tagRoot.setBackgroundColor(Color.parseColor("#000000"))
+            }
+
+            "Voot" -> {
+                onScrollingHideToolbar()
+                binding.tagLogo.setImageResource(R.drawable.tag_voot_logo)
+                binding.tagBackgroundGradient.setColorFilter(Color.parseColor("#390065"))
+                binding.tagRoot.setBackgroundColor(Color.parseColor("#7700D4"))
+            }
+            "Jio Cinema" -> {
+                onScrollingHideToolbar()
+                binding.tagLogo.setImageResource(R.drawable.tag_jiocinema_logo)
+                binding.tagBackgroundGradient.setColorFilter(Color.parseColor("#7C0053"))
+                binding.tagRoot.setBackgroundColor(Color.parseColor("#D9008D"))
+            }
+            "English", "Hindi", "Marathi", "Gujarati" -> {
+                binding.tagToolbarTitle.alpha = 1f
+                binding.tagBackgroundGradient.visibility = View.GONE
+                binding.tagLogo.visibility = View.GONE
+                val layoutParams = binding.tagPopularTitle.layoutParams as ViewGroup.MarginLayoutParams
+                layoutParams.topMargin = 270
+                binding.tagPopularTitle.layoutParams = layoutParams
+                binding.tagRoot.background = ContextCompat.getDrawable(this, R.color.background)
+                binding.tagPopularTitle.setTextColor(resources.getColor(R.color.text_title))
+                binding.tagMoviesTitle.setTextColor(resources.getColor(R.color.text_title))
+                binding.tagSeriesTitle.setTextColor(resources.getColor(R.color.text_title))
+            }
+        }
+
+        binding.tagToolbarTitle.text = tag
+    }
+
+    private fun onScrollingHideToolbar() {
+        binding.tagToolbarTitle.alpha = 0f
+        binding.tagNestedScrollview.setOnScrollChangeListener { _, _, scrollY, _, _ ->
+            Log.d("TAG_SCROLL_VIEW", scrollY.toString())
+            if (scrollY > 180) {
+                // Scrolled down
+                if (isToolbarShown) {
+                    binding.tagToolbarTitle.animate()
+                        .alpha(1f)
+                        .setDuration(500) // Set the duration of the animation in milliseconds
+                        .start()
+                    binding.tagLogo.animate()
+                        .alpha(0f)
+                        .setDuration(500) // Set the duration of the animation in milliseconds
+                        .start()
+                    isToolbarShown = false
+                }
+            } else if (scrollY < 180) {
+                // Scrolled up
+                if (!isToolbarShown) {
+                    binding.tagToolbarTitle.animate()
+                        .alpha(0f)
+                        .setDuration(500) // Set the duration of the animation in milliseconds
+                        .start()
+                    binding.tagLogo.animate()
+                        .alpha(1f)
+                        .setDuration(500) // Set the duration of the animation in milliseconds
+                        .start()
+                    isToolbarShown = true
+                }
+            }
         }
     }
 
@@ -309,15 +266,44 @@ class TagActivity : AppCompatActivity() {
         }
     }
 
-    private fun statusBarTransparent() {
-        window.setFlags(
-            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
-            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
-        )
+    private fun onClick() {
+        binding.tagBackButton.setOnClickListener {
+            onBackPressed()
+        }
+
+        popularAdapter.onClickItem =  {
+            redirectToMovieActivity(it)
+        }
+
+        moviesAdapter.onClickItem =  {
+            redirectToMovieActivity(it)
+        }
+
+        seriesAdapter.onClickItem =  {
+            redirectToMovieActivity(it)
+        }
     }
 
     override fun onBackPressed() {
         super.onBackPressed()
+        outAnimation()
+    }
+
+    private fun redirectToMovieActivity(movie: Movie){
+        val intent = Intent(this, MovieActivity::class.java)
+        intent.putExtra("MOVIE", movie)
+        startActivity(intent)
+        inAnimation()
+    }
+
+    private fun inAnimation(){
+        overridePendingTransition(
+            R.anim.slide_in_right,
+            R.anim.slide_out_left
+        )
+    }
+
+    private fun outAnimation(){
         overridePendingTransition(
             R.anim.slide_in_left,
             R.anim.slide_out_right

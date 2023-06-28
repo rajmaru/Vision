@@ -1,5 +1,6 @@
 package com.one.vision.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.WindowManager
@@ -12,7 +13,6 @@ import com.one.vision.adapters.MovieRecommendedAdapter
 import com.one.vision.databinding.ActivityMovieBinding
 import com.one.vision.itemdecoration.CustomItemMargin
 import com.one.vision.models.Movie
-import com.one.vision.models.Tag
 
 class MovieActivity : AppCompatActivity() {
 
@@ -27,7 +27,7 @@ class MovieActivity : AppCompatActivity() {
 
     private lateinit var castAdapter: MovieCastAdpater
     private lateinit var recommendedAdapter: MovieRecommendedAdapter
-    private lateinit var movieMoreAdapter: MovieMoreAdapter
+    private lateinit var moreLikeThisAdapter: MovieMoreAdapter
     private lateinit var customItemMargin: CustomItemMargin
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,6 +39,21 @@ class MovieActivity : AppCompatActivity() {
         onScrollingHideToolbar()
         init()
         getMovieData()
+        onClick()
+    }
+
+    private fun statusBarTransparent() {
+        window.setFlags(
+            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
+        )
+    }
+
+    private fun init() {
+        castAdapter = MovieCastAdpater()
+        recommendedAdapter = MovieRecommendedAdapter()
+        moreLikeThisAdapter = MovieMoreAdapter()
+        customItemMargin = CustomItemMargin()
     }
 
     private fun onScrollingHideToolbar() {
@@ -56,7 +71,7 @@ class MovieActivity : AppCompatActivity() {
                     .alpha(0f)
                     .setDuration(0)
                     .start()
-                binding.movieOttLayout.animate()
+                binding.moviePrimeIconLayout.animate()
                     .alpha(0f)
                     .setDuration(0)
                     .start()
@@ -72,19 +87,12 @@ class MovieActivity : AppCompatActivity() {
                     .alpha(1f)
                     .setDuration(0)
                     .start()
-                binding.movieOttLayout.animate()
+                binding.moviePrimeIconLayout.animate()
                     .alpha(1f)
                     .setDuration(0)
                     .start()
             }
         }
-    }
-
-    private fun init() {
-        castAdapter = MovieCastAdpater()
-        recommendedAdapter = MovieRecommendedAdapter()
-        movieMoreAdapter = MovieMoreAdapter()
-        customItemMargin = CustomItemMargin()
     }
 
     private fun getMovieData() {
@@ -97,11 +105,45 @@ class MovieActivity : AppCompatActivity() {
         binding.movieTitleTv.text = movie?.title
         binding.movieRatingsTv.text = movie?.rating
         setMovieSubtitle()
-        setMovieTag()
+        setMovieLanguages()
         binding.movieDescTv.text = movie?.description
         setMovieCast()
         getMovieRecommended()
         getMoreLikeThisData()
+    }
+
+    private fun setMovieSubtitle() {
+        subtitle = movie?.year + " • " + movie?.duration
+        movie?.tags.let { languagesList ->
+            for (i in languagesList!!.iterator()) {
+                subtitle += " • $i"
+            }
+        }
+        binding.movieSubtitleTv.text = subtitle
+    }
+
+    private fun setMovieLanguages() {
+        movie?.languages.let { languagesList ->
+            for (i in languagesList!!) {
+                if (languages == null) {
+                    languages = i
+                } else {
+                    languages += " | $i"
+                }
+            }
+        }
+        languages?.dropLast(2)
+        binding.movieLanguagesTv.text = languages
+    }
+
+    private fun setMovieCast() {
+        castAdapter.setCastList(this, movie?.Cast!!)
+        binding.movieCastRv.apply {
+            addItemDecoration(customItemMargin)
+            adapter = castAdapter
+            layoutManager =
+                LinearLayoutManager(this@MovieActivity, LinearLayoutManager.HORIZONTAL, false)
+        }
     }
 
     private fun getMovieRecommended() {
@@ -139,59 +181,49 @@ class MovieActivity : AppCompatActivity() {
     }
 
     private fun setMoreLikeThisData() {
-        movieMoreAdapter.setMoviesList(this, moreLikeThisMovieList)
+        moreLikeThisAdapter.setMoviesList(this, moreLikeThisMovieList)
         binding.movieMoreLikeThisRv.apply {
             addItemDecoration(customItemMargin)
-            adapter = movieMoreAdapter
+            adapter = moreLikeThisAdapter
             layoutManager =
                 LinearLayoutManager(this@MovieActivity, LinearLayoutManager.HORIZONTAL, false)
         }
     }
 
-    private fun setMovieCast() {
-        castAdapter.setCastList(this, movie?.Cast!!)
-        binding.movieCastRv.apply {
-            addItemDecoration(customItemMargin)
-            adapter = castAdapter
-            layoutManager =
-                LinearLayoutManager(this@MovieActivity, LinearLayoutManager.HORIZONTAL, false)
+    private fun onClick() {
+        binding.movieBackButton.setOnClickListener {
+            onBackPressed()
         }
-    }
 
-    private fun setMovieSubtitle() {
-        subtitle = movie?.year + " • " + movie?.duration
-        movie?.tags.let { languagesList ->
-            for (i in languagesList!!.iterator()) {
-                subtitle += " • $i"
-            }
+        recommendedAdapter.onItemClick = {
+            redirectToMovieActivity(it)
         }
-        binding.movieSubtitleTv.text = subtitle
-    }
 
-
-    private fun setMovieTag() {
-        movie?.languages.let { languagesList ->
-            for (i in languagesList!!) {
-                if (languages == null) {
-                    languages = i
-                } else {
-                    languages += " | $i"
-                }
-            }
+        moreLikeThisAdapter.onItemClick = {
+            redirectToMovieActivity(it)
         }
-        languages?.dropLast(2)
-        binding.movieLanguagesTv.text = languages
-    }
-
-    private fun statusBarTransparent() {
-        window.setFlags(
-            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
-            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
-        )
     }
 
     override fun onBackPressed() {
         super.onBackPressed()
+        outAnimation()
+    }
+
+    private fun redirectToMovieActivity(movie: Movie){
+        val intent = Intent(this, MovieActivity::class.java)
+        intent.putExtra("MOVIE", movie)
+        startActivity(intent)
+        inAnimation()
+    }
+
+    private fun inAnimation() {
+        overridePendingTransition(
+            R.anim.slide_in_right,
+            R.anim.slide_out_left
+        )
+    }
+
+    private fun outAnimation() {
         overridePendingTransition(
             R.anim.slide_in_left,
             R.anim.slide_out_right

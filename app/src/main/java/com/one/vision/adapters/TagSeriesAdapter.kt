@@ -12,6 +12,7 @@ import com.one.vision.models.Movie
 class TagSeriesAdapter  : RecyclerView.Adapter<TagSeriesAdapter.TagSeriesViewHolder>(){
     private lateinit var context: Context
     private lateinit var moviesList: ArrayList<Movie>
+    var onClickItem: ((Movie) -> Unit)? = null
 
     fun setMoviesList(context: Context, moviesList: ArrayList<Movie>){
         this.context = context
@@ -32,6 +33,9 @@ class TagSeriesAdapter  : RecyclerView.Adapter<TagSeriesAdapter.TagSeriesViewHol
         Glide.with(context.applicationContext)
             .load(moviesList[position].poster)
             .into(holder.binding.tagCardImage)
+        holder.itemView.setOnClickListener {
+            onClickItem?.invoke(moviesList[position])
+        }
     }
 
     override fun getItemCount(): Int {
