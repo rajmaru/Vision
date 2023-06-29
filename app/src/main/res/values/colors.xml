@@ -18,8 +18,12 @@
     <color name="inactive_icon_tick">#DADADA</color>
     <color name="recharge_layout">#DE040F</color>
 
+    <color name="season_ripple">#D1D1D1</color>
+    <color name="inactive_season">#ED969696</color>
+    <color name="active_season">#000000</color>
+
     <color name="text_title">#000000</color>
-    <color name="text_subtitle">#1E1E1E</color>
+    <color name="text_subtitle">#181818</color>
 
     <color name="logo">#FF000000</color>
     <color name="slider_active_indicator">#CD000A</color>

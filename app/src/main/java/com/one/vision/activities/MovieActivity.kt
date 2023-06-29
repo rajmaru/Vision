@@ -3,16 +3,21 @@ package com.one.vision.activities
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.view.ViewGroup
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.tabs.TabLayoutMediator
 import com.one.vision.R
 import com.one.vision.adapters.MovieCastAdpater
 import com.one.vision.adapters.MovieMoreAdapter
 import com.one.vision.adapters.MovieRecommendedAdapter
+import com.one.vision.adapters.MovieSeasonAdapter
 import com.one.vision.databinding.ActivityMovieBinding
 import com.one.vision.itemdecoration.CustomItemMargin
 import com.one.vision.models.Movie
+
 
 class MovieActivity : AppCompatActivity() {
 
@@ -24,11 +29,14 @@ class MovieActivity : AppCompatActivity() {
 
     private var recommendedMovieList = ArrayList<Movie>()
     private var moreLikeThisMovieList = ArrayList<Movie>()
+    private var seasonList =
+        listOf("Season 1", "Season 2", "Season 3", "Season 4", "Season 5", "Season 6")
 
     private lateinit var castAdapter: MovieCastAdpater
     private lateinit var recommendedAdapter: MovieRecommendedAdapter
     private lateinit var moreLikeThisAdapter: MovieMoreAdapter
     private lateinit var customItemMargin: CustomItemMargin
+    private lateinit var seasonAdapter: MovieSeasonAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -108,9 +116,46 @@ class MovieActivity : AppCompatActivity() {
         setMovieLanguages()
         binding.movieDescTv.text = movie?.description
         setMovieCast()
+        setSeasonData()
         getMovieRecommended()
         getMoreLikeThisData()
     }
+
+    private fun setSeasonData() {
+        for (i in seasonList.iterator()) {
+            binding.movieSeasonTab.addTab(binding.movieSeasonTab.newTab().setText(i))
+        }
+        seasonAdapter = MovieSeasonAdapter(seasonList)
+        binding.movieSeasonViewpager.adapter = seasonAdapter
+        binding.movieSeasonViewpager.offscreenPageLimit = 1
+        TabLayoutMediator(binding.movieSeasonTab, binding.movieSeasonViewpager) { tab, position ->
+            tab.text = seasonList[position]
+        }.attach()
+
+        // Apply start margin to the first tab and end margin to the last tab
+        binding.movieSeasonTab.addOnLayoutChangeListener { _, _, _, _, _, _, _, _, _ ->
+            applyTabMargins()
+        }
+    }
+
+    private fun applyTabMargins() {
+        val tabLayout = binding.movieSeasonTab
+        val tabCount = tabLayout.tabCount
+
+        for (i in 0 until tabCount) {
+            val tabView = tabLayout.getTabAt(i)?.view
+            tabView?.let {
+                val params = it.layoutParams as ViewGroup.MarginLayoutParams
+                if (i == 0) {
+                    params.marginStart = resources.getDimensionPixelSize(R.dimen.tab_start_margin)
+                } else if (i == tabCount - 1) {
+                    params.marginEnd = resources.getDimensionPixelSize(R.dimen.tab_end_margin)
+                }
+                it.layoutParams = params
+            }
+        }
+    }
+
 
     private fun setMovieSubtitle() {
         subtitle = movie?.year + " • " + movie?.duration
@@ -209,7 +254,7 @@ class MovieActivity : AppCompatActivity() {
         outAnimation()
     }
 
-    private fun redirectToMovieActivity(movie: Movie){
+    private fun redirectToMovieActivity(movie: Movie) {
         val intent = Intent(this, MovieActivity::class.java)
         intent.putExtra("MOVIE", movie)
         startActivity(intent)

@@ -32,7 +32,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginBottom="6dp"
         android:alpha="0.9"
-        android:fontFamily="@font/gilroy_bold"
+        android:fontFamily="@font/gilroy_regular"
         android:gravity="center"
         android:text="Shawn Ashmore"
         android:textColor="@color/text_title"

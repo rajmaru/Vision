@@ -241,6 +241,28 @@
                 app:layout_constraintTop_toBottomOf="@+id/movie_desc_tv" />
 
 
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/movie_season_tab"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:minHeight="?actionBarSize"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/movie_languages_tv"
+                app:tabGravity="fill"
+                app:tabIndicatorColor="@color/theme"
+                app:tabMode="auto"
+                app:tabRippleColor="@color/season_ripple"
+                app:tabSelectedTextColor="@color/active_season"
+                app:tabTextColor="@color/inactive_season" />
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/movie_season_viewpager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintTop_toBottomOf="@+id/movie_season_tab"
+                tools:layout_editor_absoluteX="-16dp" />
+
             <TextView
                 android:id="@+id/movie_cast_title"
                 android:layout_width="0dp"
@@ -251,7 +273,7 @@
                 android:textColor="@color/text_title"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="@+id/movie_languages_img"
-                app:layout_constraintTop_toBottomOf="@+id/movie_languages_tv" />
+                app:layout_constraintTop_toBottomOf="@id/movie_season_viewpager" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/movie_cast_rv"
@@ -274,7 +296,7 @@
                 android:textColor="@color/text_title"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="@+id/movie_cast_title"
-                app:layout_constraintTop_toBottomOf="@+id/movie_cast_rv" />
+                app:layout_constraintTop_toBottomOf="@id/movie_cast_rv" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/movie_recommended_rv"
