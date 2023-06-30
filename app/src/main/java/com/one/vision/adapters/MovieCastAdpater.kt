@@ -6,13 +6,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.one.vision.databinding.MovieCastItemBinding
-import com.one.vision.models.Tag
+import com.one.vision.models.Cast
 
 class MovieCastAdpater : RecyclerView.Adapter<MovieCastAdpater.MovieCastViewHolder>() {
     private lateinit var context: Context
-    private lateinit var castList: ArrayList<Tag?>
+    private lateinit var castList: ArrayList<Cast>
 
-    fun setCastList(context: Context, castList: ArrayList<Tag?>) {
+    fun setCastList(context: Context, castList: ArrayList<Cast>) {
         this.context = context
         this.castList = castList
         notifyDataSetChanged()
@@ -24,7 +24,7 @@ class MovieCastAdpater : RecyclerView.Adapter<MovieCastAdpater.MovieCastViewHold
 
     override fun onBindViewHolder(holder: MovieCastViewHolder, position: Int) {
         Glide.with(context.applicationContext)
-            .load(context.getDrawable(castList[position]?.image!!))
+            .load(castList[position]?.image)
             .into(holder.binding.movieCastImg)
         holder.binding.movieCastTv.text = castList[position]?.name
     }

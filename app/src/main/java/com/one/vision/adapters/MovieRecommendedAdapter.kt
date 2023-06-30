@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.one.vision.databinding.TagMoviesCardBinding
 import com.one.vision.databinding.Top10ItemBinding
 import com.one.vision.models.Movie
 
@@ -33,7 +32,7 @@ class MovieRecommendedAdapter   : RecyclerView.Adapter<MovieRecommendedAdapter.M
         }
         holder.binding.top10Number.visibility = View.GONE
         Glide.with(context.applicationContext)
-            .load(moviesList[position].poster)
+            .load(moviesList[position].image)
             .into(holder.binding.top10Image)
         holder.itemView.setOnClickListener {
             onItemClick?.invoke(moviesList[position])

@@ -32,7 +32,7 @@ class TopRatedAdapter  : RecyclerView.Adapter<TopRatedAdapter.TopRatedViewHolder
         }
         holder.binding.movieSlideRatingsTv.text = moviesList[position].rating
         Glide.with(context.applicationContext)
-            .load(moviesList[position].poster)
+            .load(moviesList[position].image)
             .into(holder.binding.movieSlideImage)
         holder.itemView.setOnClickListener {
             onItemClick?.invoke(moviesList[position])

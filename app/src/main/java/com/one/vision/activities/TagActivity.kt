@@ -16,8 +16,10 @@ import com.one.vision.adapters.TagPopularAdapter
 import com.one.vision.adapters.TagSeriesAdapter
 import com.one.vision.databinding.ActivityTagBinding
 import com.one.vision.itemdecoration.CustomItemMargin
+import com.one.vision.models.Cast
 import com.one.vision.models.Movie
-import com.one.vision.models.Tag
+import com.one.vision.models.Episode
+import com.one.vision.models.Season
 
 
 class TagActivity : AppCompatActivity() {
@@ -30,10 +32,15 @@ class TagActivity : AppCompatActivity() {
     private var moviesList = ArrayList<Movie>()
     private var seriesList = ArrayList<Movie>()
 
-    private var movieTagsList = ArrayList<String?>()
-    private var movieLanguagesList = ArrayList<String?>()
-    private var movieCastsList = ArrayList<Tag?>()
+    private var movieTagsList = ArrayList<String>()
+    private var movieLanguagesList = ArrayList<String>()
+    private var movieCastsList = ArrayList<Cast>()
+    private var movieSeasonsList = ArrayList<Season>()
+    private var movieEpisodesList = ArrayList<Episode>()
     private lateinit var movie: Movie
+    private lateinit var primeMovie: Movie
+    private lateinit var series: Movie
+    private lateinit var primeSeries: Movie
 
     private lateinit var popularAdapter: TagPopularAdapter
     private lateinit var moviesAdapter: TagMoviesAdapter
@@ -67,16 +74,123 @@ class TagActivity : AppCompatActivity() {
         moviesAdapter = TagMoviesAdapter()
         seriesAdapter = TagSeriesAdapter()
         customItemMargin = CustomItemMargin()
+        //Dummy Movie Data
+        movieTagsList.apply {
+            add("Comedy")
+            add("Drama")
+            add("Action")
+        }
         movieLanguagesList.apply {
             add("English")
             add("Hindi")
         }
         movieCastsList.apply {
-            add(Tag("Shawn Ashmore",R.drawable.sample_cast_img1))
-            add(Tag("Shawn Ashmore",R.drawable.sample_cast_img1))
-            add(Tag("Shawn Ashmore",R.drawable.sample_cast_img1))
+            add(
+                Cast(
+                    "Shawn Ashmore",
+                    "https://m.media-amazon.com/images/M/MV5BN2VjNGRjNDctYzg4MC00OTkwLThhMmItMWZlZGFiOTQ1YTAwXkEyXkFqcGdeQXVyNDAzNDk0MTQ@._V1_.jpg"
+                )
+            )
+            add(
+                Cast(
+                    "Shawn Ashmore",
+                    "https://m.media-amazon.com/images/M/MV5BN2VjNGRjNDctYzg4MC00OTkwLThhMmItMWZlZGFiOTQ1YTAwXkEyXkFqcGdeQXVyNDAzNDk0MTQ@._V1_.jpg"
+                )
+            )
+            add(
+                Cast(
+                    "Shawn Ashmore",
+                    "https://m.media-amazon.com/images/M/MV5BN2VjNGRjNDctYzg4MC00OTkwLThhMmItMWZlZGFiOTQ1YTAwXkEyXkFqcGdeQXVyNDAzNDk0MTQ@._V1_.jpg"
+                )
+            )
         }
-        movie =  Movie(
+        movieEpisodesList.apply {
+            add(Episode(
+                "E1",
+                "The Legend Begins",
+                "https://img1.hotstarext.com/image/upload/f_auto/sources/r1/cms/prod/3416/893416-h",
+                "29 Jan 2021",
+                "23m"
+            ))
+            add(Episode(
+                "E2",
+                "The Monkey King",
+                "https://img1.hotstarext.com/image/upload/f_auto/sources/r1/cms/prod/3417/893417-h",
+                "29 Jan 2021",
+                "21m"
+            ))
+            add(Episode(
+                "E3",
+                "Kishkindha Bound",
+                "https://img1.hotstarext.com/image/upload/f_auto/sources/r1/cms/prod/3419/893419-h",
+                "29 Jan 2021",
+                "21m"
+            ))
+            add(Episode(
+                "E4",
+                "The Promise",
+                "https://img1.hotstarext.com/image/upload/f_auto/sources/r1/cms/prod/3421/893421-h",
+                "29 Jan 2021",
+                "23m"
+            ))
+            add(Episode(
+                "E5",
+                "The Legend Begins",
+                "https://img1.hotstarext.com/image/upload/f_auto/sources/r1/cms/prod/3416/893416-h",
+                "29 Jan 2021",
+                "23m"
+            ))
+            add(Episode(
+                "E6",
+                "The Monkey King",
+                "https://img1.hotstarext.com/image/upload/f_auto/sources/r1/cms/prod/3417/893417-h",
+                "29 Jan 2021",
+                "21m"
+            ))
+            add(Episode(
+                "E7",
+                "Kishkindha Bound",
+                "https://img1.hotstarext.com/image/upload/f_auto/sources/r1/cms/prod/3419/893419-h",
+                "29 Jan 2021",
+                "21m"
+            ))
+            add(Episode(
+                "E8",
+                "The Promise",
+                "https://img1.hotstarext.com/image/upload/f_auto/sources/r1/cms/prod/3421/893421-h",
+                "29 Jan 2021",
+                "23m"
+            ))
+        }
+        movieSeasonsList.apply {
+            add(
+                Season(
+                    "Season 1",
+                    movieEpisodesList
+                )
+            )
+            add(Season(
+                "Season 2",
+                movieEpisodesList
+            ))
+            add(Season(
+                "Season 3",
+                movieEpisodesList
+            ))
+            add(Season(
+                "Season 4",
+                movieEpisodesList
+            ))
+            add(Season(
+                "Season 5",
+                movieEpisodesList
+            ))
+            add(Season(
+                "Season 6",
+                movieEpisodesList
+            ))
+        }
+        movie = Movie(
             "0001",
             "https://m.media-amazon.com/images/I/91A9U++FKnL._AC_SL1500_.jpg",
             "Aftermath",
@@ -87,6 +201,52 @@ class TagActivity : AppCompatActivity() {
             "A young couple struggling to stay together, when they are offered an amazing deal on a home with a questionable past that would normally be beyond their means. In a final attempt to start fresh as a couple they take the deal.",
             movieLanguagesList,
             movieCastsList,
+            null,
+            "Disney",
+            false
+        )
+        primeMovie = Movie(
+            "0001",
+            "https://m.media-amazon.com/images/I/91A9U++FKnL._AC_SL1500_.jpg",
+            "Aftermath",
+            "4.5",
+            "2014",
+            "2h 30m",
+            movieTagsList,
+            "A young couple struggling to stay together, when they are offered an amazing deal on a home with a questionable past that would normally be beyond their means. In a final attempt to start fresh as a couple they take the deal.",
+            movieLanguagesList,
+            movieCastsList,
+            null,
+            "Disney",
+            true
+        )
+        series = Movie(
+            "0001",
+            "https://m.media-amazon.com/images/I/91A9U++FKnL._AC_SL1500_.jpg",
+            "Aftermath",
+            "4.5",
+            "2014",
+            "2h 30m",
+            movieTagsList,
+            "A young couple struggling to stay together, when they are offered an amazing deal on a home with a questionable past that would normally be beyond their means. In a final attempt to start fresh as a couple they take the deal.",
+            movieLanguagesList,
+            movieCastsList,
+            movieSeasonsList,
+            "Disney",
+            false
+        )
+        primeSeries = Movie(
+            "0001",
+            "https://m.media-amazon.com/images/I/91A9U++FKnL._AC_SL1500_.jpg",
+            "Aftermath",
+            "4.5",
+            "2014",
+            "2h 30m",
+            movieTagsList,
+            "A young couple struggling to stay together, when they are offered an amazing deal on a home with a questionable past that would normally be beyond their means. In a final attempt to start fresh as a couple they take the deal.",
+            movieLanguagesList,
+            movieCastsList,
+            movieSeasonsList,
             "Disney",
             true
         )
@@ -203,10 +363,10 @@ class TagActivity : AppCompatActivity() {
     private fun getPopularData() {
         popularList.apply {
             add(movie)
-            add(movie)
-            add(movie)
-            add(movie)
-            add(movie)
+            add(series)
+            add(primeMovie)
+            add(series)
+            add(primeSeries)
             add(movie)
         }
         setPopularList()
@@ -246,12 +406,12 @@ class TagActivity : AppCompatActivity() {
 
     private fun getSeriesData() {
         seriesList.apply {
-            add(movie)
-            add(movie)
-            add(movie)
-            add(movie)
-            add(movie)
-            add(movie)
+            add(series)
+            add(series)
+            add(series)
+            add(series)
+            add(series)
+            add(series)
         }
         setSeriesList()
     }

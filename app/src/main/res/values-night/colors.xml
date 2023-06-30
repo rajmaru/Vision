@@ -22,6 +22,9 @@
     <color name="inactive_season">#ED808080</color>
     <color name="active_season">#FFFFFFFF</color>
 
+    <color name="prime">#DEBE76</color>
+    <color name="prime_bg">@android:color/transparent</color>
+
     <color name="text_title">#FFFFFF</color>
     <color name="text_subtitle">#E8E8E8</color>
 

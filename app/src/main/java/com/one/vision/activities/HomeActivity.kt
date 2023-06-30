@@ -23,7 +23,10 @@ import com.one.vision.adapters.Top10Adapter
 import com.one.vision.adapters.TopRatedAdapter
 import com.one.vision.databinding.ActivityMainBinding
 import com.one.vision.itemdecoration.CustomItemMargin
+import com.one.vision.models.Cast
 import com.one.vision.models.Movie
+import com.one.vision.models.Episode
+import com.one.vision.models.Season
 import com.one.vision.models.Tag
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -47,10 +50,15 @@ class HomeActivity : AppCompatActivity() {
     private var popularMoviesList = ArrayList<Movie>()
     private var popularSeriesList = ArrayList<Movie>()
 
-    private var movieTagsList = ArrayList<String?>()
-    private var movieLanguagesList = ArrayList<String?>()
-    private var movieCastsList = ArrayList<Tag?>()
+    private var movieTagsList = ArrayList<String>()
+    private var movieLanguagesList = ArrayList<String>()
+    private var movieCastsList = ArrayList<Cast>()
+    private var movieSeasonsList = ArrayList<Season>()
+    private var movieEpisodesList = ArrayList<Episode>()
     private lateinit var movie: Movie
+    private lateinit var primeMovie: Movie
+    private lateinit var series: Movie
+    private lateinit var primeSeries: Movie
 
     private lateinit var homeSliderAdapter: HomeSliderAdapter
     private lateinit var top10Adapter: Top10Adapter
@@ -95,6 +103,7 @@ class HomeActivity : AppCompatActivity() {
         popularMoviesAdapter = PopularMoviesAdapter()
         popularSeriesAdapter = PopularSeriesAdapter()
         customItemMargin = CustomItemMargin()
+        //Dummy Movie Data
         movieTagsList.apply {
             add("Comedy")
             add("Drama")
@@ -105,9 +114,110 @@ class HomeActivity : AppCompatActivity() {
             add("Hindi")
         }
         movieCastsList.apply {
-            add(Tag("Shawn Ashmore", R.drawable.sample_cast_img1))
-            add(Tag("Shawn Ashmore", R.drawable.sample_cast_img1))
-            add(Tag("Shawn Ashmore", R.drawable.sample_cast_img1))
+            add(
+                Cast(
+                    "Shawn Ashmore",
+                    "https://m.media-amazon.com/images/M/MV5BN2VjNGRjNDctYzg4MC00OTkwLThhMmItMWZlZGFiOTQ1YTAwXkEyXkFqcGdeQXVyNDAzNDk0MTQ@._V1_.jpg"
+                )
+            )
+            add(
+                Cast(
+                    "Shawn Ashmore",
+                    "https://m.media-amazon.com/images/M/MV5BN2VjNGRjNDctYzg4MC00OTkwLThhMmItMWZlZGFiOTQ1YTAwXkEyXkFqcGdeQXVyNDAzNDk0MTQ@._V1_.jpg"
+                )
+            )
+            add(
+                Cast(
+                    "Shawn Ashmore",
+                    "https://m.media-amazon.com/images/M/MV5BN2VjNGRjNDctYzg4MC00OTkwLThhMmItMWZlZGFiOTQ1YTAwXkEyXkFqcGdeQXVyNDAzNDk0MTQ@._V1_.jpg"
+                )
+            )
+        }
+        movieEpisodesList.apply {
+            add(Episode(
+                    "E1",
+                    "The Legend Begins",
+                    "https://img1.hotstarext.com/image/upload/f_auto/sources/r1/cms/prod/3416/893416-h",
+                    "29 Jan 2021",
+                    "23m"
+                ))
+            add(Episode(
+                "E2",
+                "The Monkey King",
+                "https://img1.hotstarext.com/image/upload/f_auto/sources/r1/cms/prod/3417/893417-h",
+                "29 Jan 2021",
+                "21m"
+            ))
+            add(Episode(
+                "E3",
+                "Kishkindha Bound",
+                "https://img1.hotstarext.com/image/upload/f_auto/sources/r1/cms/prod/3419/893419-h",
+                "29 Jan 2021",
+                "21m"
+            ))
+            add(Episode(
+                "E4",
+                "The Promise",
+                "https://img1.hotstarext.com/image/upload/f_auto/sources/r1/cms/prod/3421/893421-h",
+                "29 Jan 2021",
+                "23m"
+            ))
+            add(Episode(
+                "E5",
+                "The Legend Begins",
+                "https://img1.hotstarext.com/image/upload/f_auto/sources/r1/cms/prod/3416/893416-h",
+                "29 Jan 2021",
+                "23m"
+            ))
+            add(Episode(
+                "E6",
+                "The Monkey King",
+                "https://img1.hotstarext.com/image/upload/f_auto/sources/r1/cms/prod/3417/893417-h",
+                "29 Jan 2021",
+                "21m"
+            ))
+            add(Episode(
+                "E7",
+                "Kishkindha Bound",
+                "https://img1.hotstarext.com/image/upload/f_auto/sources/r1/cms/prod/3419/893419-h",
+                "29 Jan 2021",
+                "21m"
+            ))
+            add(Episode(
+                "E8",
+                "The Promise",
+                "https://img1.hotstarext.com/image/upload/f_auto/sources/r1/cms/prod/3421/893421-h",
+                "29 Jan 2021",
+                "23m"
+            ))
+        }
+        movieSeasonsList.apply {
+            add(
+                Season(
+                "Season 1",
+                movieEpisodesList
+                )
+            )
+            add(Season(
+                "Season 2",
+                movieEpisodesList
+                ))
+            add(Season(
+                "Season 3",
+                movieEpisodesList
+            ))
+            add(Season(
+                "Season 4",
+                movieEpisodesList
+            ))
+            add(Season(
+                "Season 5",
+                movieEpisodesList
+            ))
+            add(Season(
+                "Season 6",
+                movieEpisodesList
+            ))
         }
         movie = Movie(
             "0001",
@@ -120,6 +230,52 @@ class HomeActivity : AppCompatActivity() {
             "A young couple struggling to stay together, when they are offered an amazing deal on a home with a questionable past that would normally be beyond their means. In a final attempt to start fresh as a couple they take the deal.",
             movieLanguagesList,
             movieCastsList,
+            null,
+            "Disney",
+            false
+        )
+        primeMovie = Movie(
+            "0001",
+            "https://m.media-amazon.com/images/I/91A9U++FKnL._AC_SL1500_.jpg",
+            "Aftermath",
+            "4.5",
+            "2014",
+            "2h 30m",
+            movieTagsList,
+            "A young couple struggling to stay together, when they are offered an amazing deal on a home with a questionable past that would normally be beyond their means. In a final attempt to start fresh as a couple they take the deal.",
+            movieLanguagesList,
+            movieCastsList,
+            null,
+            "Disney",
+            true
+        )
+        series = Movie(
+            "0001",
+            "https://m.media-amazon.com/images/I/91A9U++FKnL._AC_SL1500_.jpg",
+            "Aftermath",
+            "4.5",
+            "2014",
+            "2h 30m",
+            movieTagsList,
+            "A young couple struggling to stay together, when they are offered an amazing deal on a home with a questionable past that would normally be beyond their means. In a final attempt to start fresh as a couple they take the deal.",
+            movieLanguagesList,
+            movieCastsList,
+            movieSeasonsList,
+            "Disney",
+            false
+        )
+        primeSeries = Movie(
+            "0001",
+            "https://m.media-amazon.com/images/I/91A9U++FKnL._AC_SL1500_.jpg",
+            "Aftermath",
+            "4.5",
+            "2014",
+            "2h 30m",
+            movieTagsList,
+            "A young couple struggling to stay together, when they are offered an amazing deal on a home with a questionable past that would normally be beyond their means. In a final attempt to start fresh as a couple they take the deal.",
+            movieLanguagesList,
+            movieCastsList,
+            movieSeasonsList,
             "Disney",
             true
         )
@@ -157,10 +313,10 @@ class HomeActivity : AppCompatActivity() {
     private fun getSliderData() {
         sliderList.apply {
             add(movie)
-            add(movie)
-            add(movie)
-            add(movie)
-            add(movie)
+            add(series)
+            add(primeMovie)
+            add(series)
+            add(primeSeries)
             add(movie)
         }
         setSliderData()
@@ -226,10 +382,10 @@ class HomeActivity : AppCompatActivity() {
     private fun getTop10Data() {
         top10List.apply {
             add(movie)
-            add(movie)
-            add(movie)
-            add(movie)
-            add(movie)
+            add(series)
+            add(primeMovie)
+            add(series)
+            add(primeSeries)
             add(movie)
         }
         setTop10List()
@@ -248,10 +404,10 @@ class HomeActivity : AppCompatActivity() {
     private fun getTopRatedData() {
         topRatedList.apply {
             add(movie)
-            add(movie)
-            add(movie)
-            add(movie)
-            add(movie)
+            add(series)
+            add(primeMovie)
+            add(series)
+            add(primeSeries)
             add(movie)
         }
         setTopRatedList()
@@ -290,10 +446,10 @@ class HomeActivity : AppCompatActivity() {
     private fun getPopularMoviesData() {
         popularMoviesList.apply {
             add(movie)
-            add(movie)
-            add(movie)
-            add(movie)
-            add(movie)
+            add(series)
+            add(primeMovie)
+            add(series)
+            add(primeSeries)
             add(movie)
         }
         setPopularMoviesList()
@@ -312,10 +468,10 @@ class HomeActivity : AppCompatActivity() {
     private fun getPopularSeriesData() {
         popularSeriesList.apply {
             add(movie)
-            add(movie)
-            add(movie)
-            add(movie)
-            add(movie)
+            add(series)
+            add(primeMovie)
+            add(series)
+            add(primeSeries)
             add(movie)
         }
         setPopularSeriesList()
@@ -392,14 +548,14 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
-    private fun redirectToMovieActivity(movie: Movie){
+    private fun redirectToMovieActivity(movie: Movie) {
         val intent = Intent(this, MovieActivity::class.java)
         intent.putExtra("MOVIE", movie)
         startActivity(intent)
         inAnimation()
     }
 
-    private fun redirectToTagActivity(tag: Tag){
+    private fun redirectToTagActivity(tag: Tag) {
         val intent = Intent(this, TagActivity::class.java)
         intent.putExtra("TAG", tag.name)
         startActivity(intent)

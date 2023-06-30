@@ -32,7 +32,7 @@ class MovieMoreAdapter   : RecyclerView.Adapter<MovieMoreAdapter.MovieMoreViewHo
         }
         holder.binding.top10Number.visibility = View.GONE
         Glide.with(context.applicationContext)
-            .load(moviesList[position].poster)
+            .load(moviesList[position].image)
             .into(holder.binding.top10Image)
         holder.itemView.setOnClickListener {
             onItemClick?.invoke(moviesList[position])

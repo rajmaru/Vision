@@ -31,7 +31,7 @@ class TagSeriesAdapter  : RecyclerView.Adapter<TagSeriesAdapter.TagSeriesViewHol
             holder.binding.tagMovieCardPrimeIconLayout.visibility = View.GONE
         }
         Glide.with(context.applicationContext)
-            .load(moviesList[position].poster)
+            .load(moviesList[position].image)
             .into(holder.binding.tagCardImage)
         holder.itemView.setOnClickListener {
             onClickItem?.invoke(moviesList[position])

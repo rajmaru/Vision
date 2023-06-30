@@ -33,7 +33,7 @@ class PopularMoviesAdapter : RecyclerView.Adapter<PopularMoviesAdapter.PopularMo
         holder.binding.movieSlideRatingsTv.visibility = View.GONE
         holder.binding.movieSlideStarIcon.visibility = View.GONE
         Glide.with(context.applicationContext)
-            .load(moviesList[position].poster)
+            .load(moviesList[position].image)
             .into(holder.binding.movieSlideImage)
         holder.itemView.setOnClickListener {
             onItemClick?.invoke(moviesList[position])

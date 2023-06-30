@@ -18,6 +18,9 @@
     <color name="inactive_icon_tick">#DADADA</color>
     <color name="recharge_layout">#DE040F</color>
 
+    <color name="prime">#CF872E</color>
+    <color name="prime_bg">#17EBB067</color>
+
     <color name="season_ripple">#D1D1D1</color>
     <color name="inactive_season">#ED969696</color>
     <color name="active_season">#000000</color>

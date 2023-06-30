@@ -13,9 +13,9 @@ import com.one.vision.R
 import com.one.vision.adapters.MovieCastAdpater
 import com.one.vision.adapters.MovieMoreAdapter
 import com.one.vision.adapters.MovieRecommendedAdapter
-import com.one.vision.adapters.MovieSeasonAdapter
+import com.one.vision.adapters.MovieSeasonPagerAdapter
 import com.one.vision.databinding.ActivityMovieBinding
-import com.one.vision.itemdecoration.CustomItemMargin
+import com.one.vision.itemdecoration.MovieCastItemMargin
 import com.one.vision.models.Movie
 
 
@@ -29,14 +29,12 @@ class MovieActivity : AppCompatActivity() {
 
     private var recommendedMovieList = ArrayList<Movie>()
     private var moreLikeThisMovieList = ArrayList<Movie>()
-    private var seasonList =
-        listOf("Season 1", "Season 2", "Season 3", "Season 4", "Season 5", "Season 6")
 
     private lateinit var castAdapter: MovieCastAdpater
     private lateinit var recommendedAdapter: MovieRecommendedAdapter
     private lateinit var moreLikeThisAdapter: MovieMoreAdapter
-    private lateinit var customItemMargin: CustomItemMargin
-    private lateinit var seasonAdapter: MovieSeasonAdapter
+    private lateinit var castItemMargin: MovieCastItemMargin
+    private lateinit var seasonPagerAdapter: MovieSeasonPagerAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,7 +59,7 @@ class MovieActivity : AppCompatActivity() {
         castAdapter = MovieCastAdpater()
         recommendedAdapter = MovieRecommendedAdapter()
         moreLikeThisAdapter = MovieMoreAdapter()
-        customItemMargin = CustomItemMargin()
+        castItemMargin = MovieCastItemMargin()
     }
 
     private fun onScrollingHideToolbar() {
@@ -75,14 +73,6 @@ class MovieActivity : AppCompatActivity() {
                     .alpha(1f)
                     .setDuration(100)
                     .start()
-                binding.moviePlayBtn.animate()
-                    .alpha(0f)
-                    .setDuration(0)
-                    .start()
-                binding.moviePrimeIconLayout.animate()
-                    .alpha(0f)
-                    .setDuration(0)
-                    .start()
             }
             // Smooth scroll down
             if (scrollY in 500..600) {
@@ -90,14 +80,6 @@ class MovieActivity : AppCompatActivity() {
                 binding.movieToolbarTitle.animate()
                     .alpha(0f)
                     .setDuration(100)
-                    .start()
-                binding.moviePlayBtn.animate()
-                    .alpha(1f)
-                    .setDuration(0)
-                    .start()
-                binding.moviePrimeIconLayout.animate()
-                    .alpha(1f)
-                    .setDuration(0)
                     .start()
             }
         }
@@ -110,52 +92,29 @@ class MovieActivity : AppCompatActivity() {
 
     private fun setMovieData() {
         binding.movieToolbarTitle.text = movie?.title
+        if(movie?.isPrime == true){
+            binding.moviePrimeLayout.visibility = View.VISIBLE
+        }else{
+            binding.moviePrimeLayout.visibility = View.GONE
+            val params = binding.movieTitleTv.layoutParams as ViewGroup.MarginLayoutParams
+            params.setMargins(20, 60, 0, 0)
+            binding.movieTitleTv.layoutParams = params
+        }
         binding.movieTitleTv.text = movie?.title
         binding.movieRatingsTv.text = movie?.rating
         setMovieSubtitle()
         setMovieLanguages()
         binding.movieDescTv.text = movie?.description
         setMovieCast()
-        setSeasonData()
+        if(movie?.seasonsList != null){
+            setSeasonData()
+        }else{
+            binding.movieSeasonTab.visibility = View.GONE
+            binding.movieSeasonViewpager.visibility = View.GONE
+        }
         getMovieRecommended()
         getMoreLikeThisData()
     }
-
-    private fun setSeasonData() {
-        for (i in seasonList.iterator()) {
-            binding.movieSeasonTab.addTab(binding.movieSeasonTab.newTab().setText(i))
-        }
-        seasonAdapter = MovieSeasonAdapter(seasonList)
-        binding.movieSeasonViewpager.adapter = seasonAdapter
-        binding.movieSeasonViewpager.offscreenPageLimit = 1
-        TabLayoutMediator(binding.movieSeasonTab, binding.movieSeasonViewpager) { tab, position ->
-            tab.text = seasonList[position]
-        }.attach()
-
-        // Apply start margin to the first tab and end margin to the last tab
-        binding.movieSeasonTab.addOnLayoutChangeListener { _, _, _, _, _, _, _, _, _ ->
-            applyTabMargins()
-        }
-    }
-
-    private fun applyTabMargins() {
-        val tabLayout = binding.movieSeasonTab
-        val tabCount = tabLayout.tabCount
-
-        for (i in 0 until tabCount) {
-            val tabView = tabLayout.getTabAt(i)?.view
-            tabView?.let {
-                val params = it.layoutParams as ViewGroup.MarginLayoutParams
-                if (i == 0) {
-                    params.marginStart = resources.getDimensionPixelSize(R.dimen.tab_start_margin)
-                } else if (i == tabCount - 1) {
-                    params.marginEnd = resources.getDimensionPixelSize(R.dimen.tab_end_margin)
-                }
-                it.layoutParams = params
-            }
-        }
-    }
-
 
     private fun setMovieSubtitle() {
         subtitle = movie?.year + " • " + movie?.duration
@@ -182,12 +141,50 @@ class MovieActivity : AppCompatActivity() {
     }
 
     private fun setMovieCast() {
-        castAdapter.setCastList(this, movie?.Cast!!)
+        castAdapter.setCastList(this, movie?.casts!!)
         binding.movieCastRv.apply {
-            addItemDecoration(customItemMargin)
+            addItemDecoration(castItemMargin)
             adapter = castAdapter
             layoutManager =
                 LinearLayoutManager(this@MovieActivity, LinearLayoutManager.HORIZONTAL, false)
+        }
+    }
+
+    private fun setSeasonData() {
+        for (season in movie?.seasonsList!!) {
+            binding.movieSeasonTab.addTab(binding.movieSeasonTab.newTab().setText(season.name))
+        }
+        seasonPagerAdapter = MovieSeasonPagerAdapter()
+        movie!!.seasonsList?.let { seasonPagerAdapter.setSeasonsList(this, it) }
+        binding.movieSeasonViewpager.apply{
+            adapter = seasonPagerAdapter
+            offscreenPageLimit = 1
+        }
+        TabLayoutMediator(binding.movieSeasonTab, binding.movieSeasonViewpager) { tab, position ->
+            tab.text = movie!!.seasonsList?.get(position)?.name
+        }.attach()
+
+        // Apply start margin to the first tab and end margin to the last tab
+        binding.movieSeasonTab.addOnLayoutChangeListener { _, _, _, _, _, _, _, _, _ ->
+            applyTabMargins()
+        }
+    }
+
+    private fun applyTabMargins() {
+        val tabLayout = binding.movieSeasonTab
+        val tabCount = tabLayout.tabCount
+
+        for (i in 0 until tabCount) {
+            val tabView = tabLayout.getTabAt(i)?.view
+            tabView?.let {
+                val params = it.layoutParams as ViewGroup.MarginLayoutParams
+                if (i == 0) {
+                    params.marginStart = resources.getDimensionPixelSize(R.dimen.tab_start_margin)
+                } else if (i == tabCount - 1) {
+                    params.marginEnd = resources.getDimensionPixelSize(R.dimen.tab_end_margin)
+                }
+                it.layoutParams = params
+            }
         }
     }
 
@@ -206,7 +203,7 @@ class MovieActivity : AppCompatActivity() {
     private fun setMovieRecommendedData() {
         recommendedAdapter.setMoviesList(this, recommendedMovieList)
         binding.movieRecommendedRv.apply {
-            addItemDecoration(customItemMargin)
+            addItemDecoration(castItemMargin)
             adapter = recommendedAdapter
             layoutManager =
                 LinearLayoutManager(this@MovieActivity, LinearLayoutManager.HORIZONTAL, false)
@@ -228,7 +225,7 @@ class MovieActivity : AppCompatActivity() {
     private fun setMoreLikeThisData() {
         moreLikeThisAdapter.setMoviesList(this, moreLikeThisMovieList)
         binding.movieMoreLikeThisRv.apply {
-            addItemDecoration(customItemMargin)
+            addItemDecoration(castItemMargin)
             adapter = moreLikeThisAdapter
             layoutManager =
                 LinearLayoutManager(this@MovieActivity, LinearLayoutManager.HORIZONTAL, false)

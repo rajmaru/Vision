@@ -32,7 +32,7 @@ class HomeSliderAdapter : RecyclerView.Adapter<HomeSliderAdapter.HomeSliderViewH
             holder.binding.homeSliderPrimeIconLayout.visibility = View.GONE
         }
         Glide.with(context.applicationContext)
-            .load(moviesList[position].poster)
+            .load(moviesList[position].image)
             .into(holder.binding.homeSliderImage)
         holder.itemView.setOnClickListener {
             onItemClick?.invoke(moviesList[position])

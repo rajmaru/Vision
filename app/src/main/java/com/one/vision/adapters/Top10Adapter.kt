@@ -33,7 +33,7 @@ class Top10Adapter : RecyclerView.Adapter<Top10Adapter.Top10ViewHolder>(){
         holder.binding.top10Number.visibility = View.VISIBLE
         holder.binding.top10Number.text = "${position + 1}"
         Glide.with(context.applicationContext)
-            .load(moviesList[position].poster)
+            .load(moviesList[position].image)
             .into(holder.binding.top10Image)
         holder.itemView.setOnClickListener {
             onItemClick?.invoke(moviesList[position])
