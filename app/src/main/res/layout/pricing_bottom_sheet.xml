@@ -25,14 +25,31 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <TextView
+                android:id="@+id/pricing_error_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="20dp"
+                android:alpha="0.8"
+                android:fontFamily="@font/gilroy_bold"
+                android:text="Only prime members can access this content."
+                android:textColor="@color/text_title"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/pricing_divider" />
+
             <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/pricing_viewpager"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="17dp"
+                android:overScrollMode="never"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/pricing_divider" />
+                app:layout_constraintTop_toBottomOf="@id/pricing_error_title" />
 
             <LinearLayout
                 android:id="@+id/pricing_rv_dots"

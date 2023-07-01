@@ -135,56 +135,56 @@ class HomeActivity : AppCompatActivity() {
         }
         movieEpisodesList.apply {
             add(Episode(
-                    "E1",
+                    "1",
                     "The Legend Begins",
                     "https://img1.hotstarext.com/image/upload/f_auto/sources/r1/cms/prod/3416/893416-h",
                     "29 Jan 2021",
                     "23m"
                 ))
             add(Episode(
-                "E2",
+                "2",
                 "The Monkey King",
                 "https://img1.hotstarext.com/image/upload/f_auto/sources/r1/cms/prod/3417/893417-h",
                 "29 Jan 2021",
                 "21m"
             ))
             add(Episode(
-                "E3",
+                "3",
                 "Kishkindha Bound",
                 "https://img1.hotstarext.com/image/upload/f_auto/sources/r1/cms/prod/3419/893419-h",
                 "29 Jan 2021",
                 "21m"
             ))
             add(Episode(
-                "E4",
+                "4",
                 "The Promise",
                 "https://img1.hotstarext.com/image/upload/f_auto/sources/r1/cms/prod/3421/893421-h",
                 "29 Jan 2021",
                 "23m"
             ))
             add(Episode(
-                "E5",
+                "5",
                 "The Legend Begins",
                 "https://img1.hotstarext.com/image/upload/f_auto/sources/r1/cms/prod/3416/893416-h",
                 "29 Jan 2021",
                 "23m"
             ))
             add(Episode(
-                "E6",
+                "6",
                 "The Monkey King",
                 "https://img1.hotstarext.com/image/upload/f_auto/sources/r1/cms/prod/3417/893417-h",
                 "29 Jan 2021",
                 "21m"
             ))
             add(Episode(
-                "E7",
+                "7",
                 "Kishkindha Bound",
                 "https://img1.hotstarext.com/image/upload/f_auto/sources/r1/cms/prod/3419/893419-h",
                 "29 Jan 2021",
                 "21m"
             ))
             add(Episode(
-                "E8",
+                "8",
                 "The Promise",
                 "https://img1.hotstarext.com/image/upload/f_auto/sources/r1/cms/prod/3421/893421-h",
                 "29 Jan 2021",
@@ -446,10 +446,10 @@ class HomeActivity : AppCompatActivity() {
     private fun getPopularMoviesData() {
         popularMoviesList.apply {
             add(movie)
-            add(series)
+            add(movie)
             add(primeMovie)
-            add(series)
-            add(primeSeries)
+            add(movie)
+            add(primeMovie)
             add(movie)
         }
         setPopularMoviesList()
@@ -467,12 +467,12 @@ class HomeActivity : AppCompatActivity() {
 
     private fun getPopularSeriesData() {
         popularSeriesList.apply {
-            add(movie)
             add(series)
-            add(primeMovie)
             add(series)
             add(primeSeries)
-            add(movie)
+            add(series)
+            add(primeSeries)
+            add(series)
         }
         setPopularSeriesList()
     }

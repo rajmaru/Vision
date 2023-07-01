@@ -25,14 +25,12 @@ class MovieSeasonRVAdapter : RecyclerView.Adapter<MovieSeasonRVAdapter.MovieSeas
 
     override fun onBindViewHolder(holder: MovieSeasonRVViewHolder, position: Int) {
         val episode = episodes[position]
-        if(episode != null){
-            holder.binding.movieSeasonTitle.text = episode.title
-            val subtitle = "${episode.number} • ${episode.date} • ${episode.duration}"
-            holder.binding.movieSeasonSubtitle.text = subtitle
-            Glide.with(context)
-                .load(episode.image)
-                .into(holder.binding.movieSeasonImg)
-        }
+        holder.binding.movieSeasonTitle.text = episode.title
+        val subtitle = "E${episode.number} • ${episode.date} • ${episode.duration}"
+        holder.binding.movieSeasonSubtitle.text = subtitle
+        Glide.with(context)
+            .load(episode.image)
+            .into(holder.binding.movieSeasonImg)
     }
 
     override fun getItemCount(): Int {

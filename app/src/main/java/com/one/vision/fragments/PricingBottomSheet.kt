@@ -1,6 +1,7 @@
 package com.one.vision.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -29,7 +30,6 @@ class PricingBottomSheet: BottomSheetDialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         init()
         getPricingData()
         onClick()
@@ -40,12 +40,25 @@ class PricingBottomSheet: BottomSheetDialogFragment() {
     }
 
     private fun getPricingData() {
-        pricingList.apply {
-            add(Pricing("Free","0"))
-            add(Pricing("Monthly","199"))
-            add(Pricing("Yearly","599"))
+        var activityName = activity?.localClassName
+        activityName = activityName?.replace("activities.","")
+        if(activityName == "AboutActivity"){
+            binding.pricingErrorTitle.visibility = View.GONE
+            pricingList.apply {
+                add(Pricing("Free","0"))
+                add(Pricing("Monthly","199"))
+                add(Pricing("Yearly","599"))
+            }
+            setPricingList()
         }
-        setPricingList()
+        if(activityName == "MovieActivity"){
+            binding.pricingErrorTitle.visibility = View.VISIBLE
+            pricingList.apply {
+                add(Pricing("Monthly","199"))
+                add(Pricing("Yearly","599"))
+            }
+            setPricingList()
+        }
     }
 
     private fun init(){
