@@ -509,6 +509,7 @@ class HomeActivity : AppCompatActivity() {
     private fun onClick() {
         binding.homeProfilePic.setOnClickListener {
             startActivity(Intent(this@HomeActivity, AboutActivity::class.java))
+            inAnimation()
         }
 
         binding.homeSlider.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {

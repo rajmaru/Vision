@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.tabs.TabLayoutMediator
@@ -15,6 +16,7 @@ import com.one.vision.adapters.MovieMoreAdapter
 import com.one.vision.adapters.MovieRecommendedAdapter
 import com.one.vision.adapters.MovieSeasonPagerAdapter
 import com.one.vision.databinding.ActivityMovieBinding
+import com.one.vision.fragments.PricingBottomSheet
 import com.one.vision.itemdecoration.MovieCastItemMargin
 import com.one.vision.models.Movie
 
@@ -235,6 +237,15 @@ class MovieActivity : AppCompatActivity() {
     private fun onClick() {
         binding.movieBackButton.setOnClickListener {
             onBackPressed()
+        }
+
+        binding.moviePlayBtn.setOnClickListener {
+            if(movie?.isPrime == true){
+                val pricingBottomSheet = PricingBottomSheet()
+                pricingBottomSheet.show(supportFragmentManager, "PRICING_BOTTOMSHEET")
+            }else{
+                Toast.makeText(this, "Playing", Toast.LENGTH_SHORT).show()
+            }
         }
 
         recommendedAdapter.onItemClick = {

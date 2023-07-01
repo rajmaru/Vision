@@ -16,8 +16,8 @@ import com.one.vision.R
 
 
 class PricingItemDecoration(context: Context) : ItemDecoration() {
-    private val colorActive = context.getResources().getColor(R.color.slider_active_indicator)
-    private val colorInactive = context.getResources().getColor(R.color.slider_inactive_indicator)
+    private val colorActive = context.resources.getColor(R.color.slider_active_indicator)
+    private val colorInactive = context.resources.getColor(R.color.slider_inactive_indicator)
 
     /**
      * Height of the space the indicator takes up at the bottom of the view.
