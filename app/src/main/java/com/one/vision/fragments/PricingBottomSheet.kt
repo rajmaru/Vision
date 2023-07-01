@@ -1,5 +1,6 @@
 package com.one.vision.fragments
 
+import android.app.Dialog
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -7,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.one.vision.R
 import com.one.vision.adapters.PricingAdapter
 import com.one.vision.databinding.PricingBottomSheetBinding
 import com.one.vision.itemdecoration.PricingItemDecoration
@@ -37,6 +39,15 @@ class PricingBottomSheet: BottomSheetDialogFragment() {
         init()
         getPricingData()
         onClick()
+    }
+
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        val dialog = super.onCreateDialog(savedInstanceState)
+
+        // Set the custom animations for slide-up and slide-down
+         dialog.window?.setWindowAnimations(R.style.SlideAnimation)
+
+        return dialog
     }
 
     private fun onClick() {

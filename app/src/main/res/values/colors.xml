@@ -18,6 +18,8 @@
     <color name="inactive_icon_tick">#DADADA</color>
     <color name="recharge_layout">#DE040F</color>
 
+    <color name="play_btn_ripple">#B2040D</color>
+
     <color name="prime">#CF872E</color>
     <color name="prime_bg">#17EBB067</color>
 

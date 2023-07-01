@@ -222,21 +222,22 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/movie_play_btn"
+                style="@style/Widget.Material3.Button.ElevatedButton"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="18dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="11dp"
                 android:layout_marginEnd="18dp"
-                android:backgroundTint="#A4070E"
-                android:fontFamily="sans-serif-medium"
+                android:backgroundTint="@color/recharge_layout"
+                android:fontFamily="@font/gilroy_bold"
                 android:text="Watch Now"
                 android:textColor="@color/white"
-                android:textSize="14sp"
+                android:textSize="15sp"
                 app:cornerRadius="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/movie_cast_rv"
-                app:rippleColor="#E50914" />
+                app:rippleColor="@color/play_btn_ripple" />
 
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/movie_season_tab"

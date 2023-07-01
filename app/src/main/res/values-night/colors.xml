@@ -7,9 +7,9 @@
     <color name="background">#000000</color>
     <color name="surface">#1A1A1A</color>
 
-    <color name="btm_sheet_background">#0E0E0E</color>
-    <color name="btm_sheet_divider">#505050</color>
-    <color name="btm_sheet_surface">#1A1A1A</color>
+    <color name="btm_sheet_background">#141414</color>
+    <color name="btm_sheet_divider">#494949</color>
+    <color name="btm_sheet_surface">#222222</color>
 
     <color name="tag_bg_gradient">#01013D</color>
     <color name="tag_background">#0052B8</color>
@@ -17,6 +17,8 @@
     <color name="active_icon_tick">#00FF00</color>
     <color name="inactive_icon_tick">#ED5E5E5E</color>
     <color name="recharge_layout">#BD060E</color>
+
+    <color name="play_btn_ripple">#CC4F54</color>
 
     <color name="season_ripple">#282828</color>
     <color name="inactive_season">#ED808080</color>
@@ -30,6 +32,6 @@
 
     <color name="logo">#F5F5F1</color>
     <color name="slider_active_indicator">#ffffff</color>
-    <color name="slider_inactive_indicator">#2E2E2E</color>
+    <color name="slider_inactive_indicator">#3A3A3A</color>
 
 </resources>

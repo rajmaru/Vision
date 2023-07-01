@@ -38,4 +38,10 @@
         <item name="android:windowTranslucentStatus">true</item>
     </style>
 
+    <!-- Slide Animation -->
+    <style name="SlideAnimation">
+        <item name="android:windowExitAnimation">@anim/slide_down</item>
+    </style>
+
+
 </resources>
