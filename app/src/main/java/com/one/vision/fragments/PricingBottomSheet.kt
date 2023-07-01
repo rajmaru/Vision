@@ -24,6 +24,10 @@ class PricingBottomSheet: BottomSheetDialogFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        dialog?.window?.setFlags(
+            WindowManager.LayoutParams.FLAG_FULLSCREEN,
+            WindowManager.LayoutParams.FLAG_FULLSCREEN
+        )
         binding = PricingBottomSheetBinding.inflate(inflater, container, false)
         return binding.root
     }
