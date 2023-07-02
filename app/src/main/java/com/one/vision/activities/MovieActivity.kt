@@ -244,7 +244,7 @@ class MovieActivity : AppCompatActivity() {
                 val pricingBottomSheet = PricingBottomSheet()
                 pricingBottomSheet.show(supportFragmentManager, "PRICING_BOTTOMSHEET")
             }else{
-                Toast.makeText(this, "Playing", Toast.LENGTH_SHORT).show()
+                startActivity(Intent(this@MovieActivity, VideoViewActivity::class.java))
             }
         }
 

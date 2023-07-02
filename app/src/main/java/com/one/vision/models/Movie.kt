@@ -9,6 +9,7 @@ data class Movie(
     val id: String?,
     val image: String?,
     val title: String?,
+    val type: String?,
     val rating: String?,
     val year: String?,
     val duration : String?,

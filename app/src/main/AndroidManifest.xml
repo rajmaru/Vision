@@ -16,9 +16,13 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".activities.VideoViewActivity"
+            android:screenOrientation="landscape"
+            android:exported="false" />
+        <activity
             android:name=".activities.MovieActivity"
             android:exported="false"
-            android:theme="@style/Theme.FullScreen"/>
+            android:theme="@style/Theme.FullScreen" />
         <activity
             android:name=".activities.TagActivity"
             android:exported="false"

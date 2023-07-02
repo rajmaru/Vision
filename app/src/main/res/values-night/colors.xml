@@ -11,9 +11,6 @@
     <color name="btm_sheet_divider">#494949</color>
     <color name="btm_sheet_surface">#222222</color>
 
-    <color name="tag_bg_gradient">#01013D</color>
-    <color name="tag_background">#0052B8</color>
-
     <color name="active_icon_tick">#00FF00</color>
     <color name="inactive_icon_tick">#ED5E5E5E</color>
     <color name="recharge_layout">#BD060E</color>
