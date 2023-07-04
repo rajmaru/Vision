@@ -6,9 +6,10 @@ import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.tabs.TabLayoutMediator
 import com.one.vision.R
 import com.one.vision.adapters.MovieCastAdpater
@@ -153,41 +154,55 @@ class MovieActivity : AppCompatActivity() {
     }
 
     private fun setSeasonData() {
+        // Setting Season Tab
         for (season in movie?.seasonsList!!) {
             binding.movieSeasonTab.addTab(binding.movieSeasonTab.newTab().setText(season.name))
         }
+        // Setting Season ViewPager and Adapter
         seasonPagerAdapter = MovieSeasonPagerAdapter()
         movie!!.seasonsList?.let { seasonPagerAdapter.setSeasonsList(this, it) }
         binding.movieSeasonViewpager.apply{
             adapter = seasonPagerAdapter
             offscreenPageLimit = 1
         }
+
+        // Connecting Tablayout and Viewpager
         TabLayoutMediator(binding.movieSeasonTab, binding.movieSeasonViewpager) { tab, position ->
             tab.text = movie!!.seasonsList?.get(position)?.name
         }.attach()
 
         // Apply start margin to the first tab and end margin to the last tab
         binding.movieSeasonTab.addOnLayoutChangeListener { _, _, _, _, _, _, _, _, _ ->
-            applyTabMargins()
-        }
-    }
+            val tabLayout = binding.movieSeasonTab
+            val tabCount = tabLayout.tabCount
 
-    private fun applyTabMargins() {
-        val tabLayout = binding.movieSeasonTab
-        val tabCount = tabLayout.tabCount
-
-        for (i in 0 until tabCount) {
-            val tabView = tabLayout.getTabAt(i)?.view
-            tabView?.let {
-                val params = it.layoutParams as ViewGroup.MarginLayoutParams
-                if (i == 0) {
-                    params.marginStart = resources.getDimensionPixelSize(R.dimen.tab_start_margin)
-                } else if (i == tabCount - 1) {
-                    params.marginEnd = resources.getDimensionPixelSize(R.dimen.tab_end_margin)
+            for (i in 0 until tabCount) {
+                val tabView = tabLayout.getTabAt(i)?.view
+                tabView?.let {
+                    val params = it.layoutParams as ViewGroup.MarginLayoutParams
+                    if (i == 0) {
+                        params.marginStart = resources.getDimensionPixelSize(R.dimen.tab_start_margin)
+                    } else if (i == tabCount - 1) {
+                        params.marginEnd = resources.getDimensionPixelSize(R.dimen.tab_end_margin)
+                    }
+                    it.layoutParams = params
                 }
-                it.layoutParams = params
             }
         }
+
+        seasonPagerAdapter.showGradient.observe(this, Observer { showGradient ->
+            if(showGradient){
+                binding.movieSeasonBottomGradient.animate()
+                    ?.alpha(1f)
+                    ?.setDuration(50)
+                    ?.start()
+            }else{
+                binding.movieSeasonBottomGradient.animate()
+                    ?.alpha(0f)
+                    ?.setDuration(50)
+                    ?.start()
+            }
+        })
     }
 
     private fun getMovieRecommended() {
